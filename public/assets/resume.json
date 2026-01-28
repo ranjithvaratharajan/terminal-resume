@@ -42,148 +42,227 @@
         },
         {
             "id": 5,
-            "startDate": "Jan 2015",
-            "endDate": "Sep 2017",
-            "title": "Implementation Engineer",
-            "company": "Saggezza India Pvt. Ltd.",
-            "description": "We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
-        }
-    ],
-    "education": [
+            "startDate": "Oct 2016",
+            "endDate": "Oct 2017",
+            "title": "Software Engineer",
+            "company": "Cogwave Software Technologies",
+            "description": "Created frontend web applications to reduce redundant or inefficient procedures and processes. Maintained a high level of quality. Worked on large projects while maintaining deadline and high quality. Worked on back-end hotel/room reservation processes for normal workflows. Worked directly with clients to document and program custom hotel/room policies. Traveled to client sites to train clients on using solutions. Worked directly with clients to analyze and troubleshoot payment issues in a client support role."
+        },
         {
-            "id": 1,
-            "startYear": "2010",
-            "endYear": "2014",
-            "title": "Bachelor of Technology",
-            "name": "Kalasalingam University",
-            "class": "First Class"
+            "id": 6,
+            "startDate": "Nov 2014",
+            "endDate": "Oct 2016",
+            "title": "Software Developer",
+            "company": "Sivasakthi Software Services",
+            "description": "Maintained a high level of quality. Worked on large projects while maintaining deadlines and high quality."
         }
     ],
     "skills": [
         {
             "id": 1,
-            "title": "TypeScript",
+            "title": "ANGULAR",
             "percentage": 90
         },
         {
             "id": 2,
-            "title": "Angular",
-            "percentage": 90
+            "title": "C# / ASP.NET / WEBAPI",
+            "percentage": 80
         },
         {
             "id": 3,
-            "title": "Javascript",
-            "percentage": 85
+            "title": "SSIS / SSRS",
+            "percentage": 70
         },
         {
             "id": 4,
-            "title": "C#",
-            "percentage": 85
+            "title": "SOLID / TDD / DESIGN PATTERNS",
+            "percentage": 80
         },
         {
             "id": 5,
-            "title": ".NET",
-            "percentage": 85
+            "title": "CSS / SASS",
+            "percentage": 90
         },
         {
             "id": 6,
-            "title": "SQL Server",
-            "percentage": 85
+            "title": "JASMINE / KARMA",
+            "percentage": 95
         },
         {
             "id": 7,
-            "title": "HTML5",
-            "percentage": 90
+            "title": "PYTHON",
+            "percentage": 40
         },
         {
             "id": 8,
-            "title": "CSS3",
-            "percentage": 90
+            "title": "REACTJS",
+            "percentage": 50
+        }
+    ],
+    "education": [
+        {
+            "id": 1,
+            "startYear": "2009",
+            "endYear": "2012",
+            "title": "MASTER OF COMPUTER APPLICATIONS",
+            "name": "HINDUSTHAN COLLEGE OF ENGINEERING AND TECHNOLOGIES",
+            "class": "Distinction"
         },
         {
-            "id": 9,
-            "title": "Redis",
-            "percentage": 90
+            "id": 2,
+            "startYear": "2006",
+            "endYear": "2006",
+            "title": "BACHELOR OF COMPUTER APPLICATIONS",
+            "name": "SMS COLLEGE OF ARTS AND SCIENCE",
+            "class": "First Class"
         }
     ],
     "projects": [],
     "testimonials": [
         {
             "id": 1,
-            "name": "John Doe",
-            "position": "Project Manager",
-            "comments": "Ranjith is an exceptional developer who always delivers high-quality code on time."
+            "name": "MEGANATHAN RAVINDRAN",
+            "position": "TECHNOLOGY DELIVERY ASSOC. LEAD MANAGER / ACCENTURE",
+            "image": "https://api.varanjith.com/uploads/685bce36ac686.jpg",
+            "comments": "Ranjith serves as a senior developer and technical lead for the WPD/CMA MUT Modernization program. His exceptional work includes rewriting the UI screens using Angular texh stack for both the WPD and CMA MUT applications. Additionally, he has mentored and supported over 4 ASEs in Angular, ensuring timely completion of tasks. Ranjith's dedication and quick learning abilities make him a valuable resource."
         },
         {
             "id": 2,
-            "name": "Jane Smith",
-            "position": "Tech Lead",
-            "comments": "Great problem solver and a team player. Highly recommended!"
+            "name": "NIMEL THOMAS",
+            "position": "TECHNOLOGY DELIVERY LEAD MANAGER / ACCENTURE",
+            "image": "https://api.varanjith.com/uploads/685bce3e61395.jpg",
+            "comments": "RV thank you for your leadership in the sprint 0 space for the frontend and also for helping out the broader team with issues. we have a long ways to go and your leadership will be key for successfull delivery. Thank you"
+        },
+        {
+            "id": 3,
+            "name": "JOEL BRANZINE DSOUZA",
+            "position": "PACKAGED APP DEVELOPMENT ASSOC MANAGER / ACCENTURE",
+            "image": "https://api.varanjith.com/uploads/685bcb5480753.jpg",
+            "comments": "Your effort for sprint 0 during release 1.2.0, 1.2.1 and 1.2.2 has been exceptional. Your guidance for developers preparing sprint 0 document was very effective which helped us to improve quality of technical documents. Sometimes when we could not put frontend developers for a theme, you took up that responsibility & was performing dual roles of preparing sa well assisting in preparing documents, which added great value & increased flexibility of sprint 0 team. Thank you for your contributions to sprint 0 team"
+        },
+        {
+            "id": 4,
+            "name": "SUGUNA BHUSHAN",
+            "position": "STAFF SOFTWARE ENGINEER / SYMPLR",
+            "image": "https://api.varanjith.com/uploads/685bcb881585d.jpg",
+            "comments": "He is a full stack developer with .NET and UI Skill set. He is always given challenging UI styling work, he has always overcome the challenges and delivered the work on time with quality.\nAs his team lead, I am always confident to take up challenging tasks for the team and will be delivered with quality.\nWish him all the luck ahead."
+        },
+        {
+            "id": 5,
+            "name": "VIJAYAKUMAR PALANISAMY",
+            "position": "SUPERVISING ASSOCIATE / EY.",
+            "image": "https://api.varanjith.com/uploads/685bcb9586ca7.jpg",
+            "comments": "Quick learner and smart worker. Ready to accept the challenges and deliver it on time... Good Team player."
+        },
+        {
+            "id": 6,
+            "name": "SELVAKUMAR VADAMALAI",
+            "position": "LEAD TESTING / SAGGEZZA",
+            "image": "https://api.varanjith.com/uploads/685bcba12b912.jpg",
+            "comments": "I rarely come across real talents who stand out like Ranjith. Genuine expert’ is the phrase that comes to mind when I think about him."
+        },
+        {
+            "id": 7,
+            "name": "GAFOOR SHAIK",
+            "position": "STAFF SOFTWARE ENGINEER / GE",
+            "image": "https://api.varanjith.com/uploads/685bcbac5a6e7.jpeg",
+            "comments": "Ranjith is a proactive and self motivated team player with good Technical skills. His expertisation on front end technoligies like angular 7 and server side technlogies Web Api helped the team to solve complex issues.He is flexible and has excellent problem solving skills. I would recommend him as a full stack .net developer."
+        },
+        {
+            "id": 8,
+            "name": "SARBAJIT DASH",
+            "position": "SENIOR SOFTWARE ENGINEER / GE",
+            "image": "https://api.varanjith.com/uploads/685bcbb60485c.jpg",
+            "comments": "Working with Ranjith is a wonderful experience.He is very organized and dedicated. He make sure he completes task on time and without compromising any quality. He contributed many ideas out of the box. He has good sense of humor and strong work ethics."
+        },
+        {
+            "id": 9,
+            "name": "SHRAVIL POTDAR",
+            "position": "SOFTWARE ENGINEER / GE",
+            "image": "https://api.varanjith.com/uploads/685bcbc0ad4a7.jpg",
+            "comments": "Ranjith is a extra ordinary guy, who always thinks out of the box. His mind blowing ideas have lead our team to Hackathon winners. He always keeps his work environment cool. His skills are amazing. He is a quick learner. He is the guy who never fears difficulties."
+        },
+        {
+            "id": 10,
+            "name": "RAGUVENTHAN",
+            "position": "HEAD OF IT / FIRST STEPS",
+            "image": "https://api.varanjith.com/uploads/685bcbcd25bb9.jpg",
+            "comments": "The most energetic person I have ever met. He is a quick learner, get complete all the works before deadline."
+        },
+        {
+            "id": 11,
+            "name": "PRABHAKARAN SATHASIVAM",
+            "position": "PROJECT MANAGER / SIVASAKTHI SOFTWARES",
+            "image": "https://api.varanjith.com/uploads/685bcbd965222.jpg",
+            "comments": "Ranjith was my colleague at Sivasakthi Software. He is sincere, dedicated in his work. I wish him all good luck"
         }
     ],
     "clients": [
         {
             "id": 1,
-            "name": "Google",
-            "logoAscii": "  G  "
+            "name": "Accenture India",
+            "logoAscii": "\n      >\n    > >\n  > > >\n ACCENTURE\n          "
         },
         {
             "id": 2,
-            "name": "Microsoft",
-            "logoAscii": "  M  "
+            "name": "GE",
+            "logoAscii": "\n   (GE)\n General\n Electric\n          "
         },
         {
             "id": 3,
-            "name": "Netflix",
-            "logoAscii": "  N  "
+            "name": "RRD Communications",
+            "logoAscii": "\n  RR    RR   DD\n  R R   R R  D  D\n  RR    RR   D  D\n  R R   R R  DD\n       RRD\n          "
         },
         {
             "id": 4,
-            "name": "Amazon",
-            "logoAscii": "  A  "
+            "name": "API Healthcare",
+            "logoAscii": "\n   A   PPP  III\n  A A  P  P  I\n AAAAA PPP   I\n A   A P    III\n    HEALTHCARE\n          "
         },
         {
             "id": 5,
-            "name": "Apple",
-            "logoAscii": "  A  "
+            "name": "Symplr",
+            "logoAscii": "\n    /\n   (_) \n  symplr\n    \n          "
         },
         {
             "id": 6,
-            "name": "Tesla",
-            "logoAscii": "  T  "
+            "name": "NatWest",
+            "logoAscii": "\n    >>>\n   >>>>>\n  >>>>>>>\n  NatWest\n          "
         },
         {
             "id": 7,
-            "name": "SpaceX",
-            "logoAscii": "  S  "
+            "name": "LSC Communications",
+            "logoAscii": "\n  |   SSS  CCC\n  |   S    C\n  |   SSS  C\n  |__   S  C\n      SSS  CCC\n          "
         },
         {
             "id": 8,
-            "name": "Meta",
-            "logoAscii": "  M  "
+            "name": "L&T",
+            "logoAscii": "\n  L&T\n [===]\n          "
         },
         {
             "id": 9,
-            "name": "Nvidia",
-            "logoAscii": "  N  "
+            "name": "Inversis",
+            "logoAscii": "\n  i n v\n  e r s\n  i s .\n          "
         }
     ],
     "contact": {
-        "email": "ranjith.varatharajan@gmail.com",
-        "phone": "+91 9600 240 762",
-        "location": "Coimbatore, India",
+        "email": "IAM[at]VARANJITH.COM",
+        "phone": "+91 8489130424",
+        "location": "BASED IN COIMBATORE, IN",
         "social": [
             {
                 "platform": "LinkedIn",
-                "url": "https://linkedin.com/in/ranjithvaratharajan"
+                "url": "https://linkedin.com/in/ranjithvaratharajan",
+                "class": "linkedin"
             },
             {
                 "platform": "GitHub",
-                "url": "https://github.com/ranjithvaratharajan"
+                "url": "https://github.com/ranjithvaratharajan",
+                "class": "github"
             },
             {
                 "platform": "Twitter",
-                "url": "https://twitter.com/ranjithvaratharajan"
+                "url": "https://twitter.com/ranjithvaratharajan",
+                "class": "twitter"
             }
         ]
     },
