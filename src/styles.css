@@ -1,0 +1,28 @@
+:root {
+  --global-font-size: 15px;
+  --global-line-height: 1.4em;
+  --global-space: 10px;
+  --font-stack: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+  --primary-color: #00ff41; /* classic matrix green */
+  --secondary-color: #727578;
+  --background-color: #0d1117; /* slightly softer black */
+  --surface-color: #161b22;
+  --font-color: #f0f6fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--font-color);
+  font-family: var(--font-stack);
+}
+
+.terminal-alert {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 1em;
+  margin-bottom: 1em;
+}
