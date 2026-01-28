@@ -35,7 +35,7 @@ jobs:
         # The local folder containing the build artifacts
         local-dir: ./dist/terminal-resume/browser/
         # The remote folder on Spaceship (usually public_html or subfolder)
-        server-dir: ./public_html/ 
+        server-dir: ./
         protocol: ftps
         exclude: |
           **/.git*
