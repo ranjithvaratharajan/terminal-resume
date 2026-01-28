@@ -113,6 +113,103 @@ export class ResumeService {
                 class: 'First Class'
             }
         ],
+        newsItems: [
+            "[JOB_STATUS]: Looking for new opportunities in Full Stack Development / Angular / Node.js...",
+            "[LEARNING]: Mastering AWS Cloud Architecture & Serverless patterns...",
+            "[ACHIEVEMENT]: Delivered 5+ Enterprise Angular Applications in the last year...",
+            "[UPDATE]: Refactoring legacy codebases for 30% performance boost..."
+        ],
+        clients: [
+            {
+                id: 1,
+                name: 'Accenture India',
+                logoAscii: `
+      >
+    > >
+  > > >
+ ACCENTURE
+          `
+            },
+            {
+                id: 2,
+                name: 'GE',
+                logoAscii: `
+   (GE)
+ General
+ Electric
+          `
+            },
+            {
+                id: 3,
+                name: 'RRD Communications',
+                logoAscii: `
+  RR    RR   DD
+  R R   R R  D  D
+  RR    RR   D  D
+  R R   R R  DD
+       RRD
+          `
+            },
+            {
+                id: 4,
+                name: 'API Healthcare',
+                logoAscii: `
+   A   PPP  III
+  A A  P  P  I
+ AAAAA PPP   I
+ A   A P    III
+    HEALTHCARE
+          `
+            },
+            {
+                id: 5,
+                name: 'Symplr',
+                logoAscii: `
+    /
+   (_) 
+  symplr
+    
+          `
+            },
+            {
+                id: 6,
+                name: 'NatWest',
+                logoAscii: `
+    >>>
+   >>>>>
+  >>>>>>>
+  NatWest
+          `
+            },
+            {
+                id: 7,
+                name: 'LSC Communications',
+                logoAscii: `
+  |   SSS  CCC
+  |   S    C
+  |   SSS  C
+  |__   S  C
+      SSS  CCC
+          `
+            },
+            {
+                id: 8,
+                name: 'L&T',
+                logoAscii: `
+  L&T
+ [===]
+          `
+            },
+            {
+                id: 9,
+                name: 'Inversis',
+                logoAscii: `
+  i n v
+  e r s
+  i s .
+          `
+            }
+        ],
         contact: {
             email: 'IAM[at]VARANJITH.COM',
             phone: '+91 8489130424',

@@ -1,10 +1,18 @@
+export interface Client {
+    id: number;
+    name: string;
+    logoAscii: string;
+}
+
 export interface Resume {
     about: About;
-    experience: Experience[];
     skills: Skill[];
-    contact: Contact;
+    experience: Experience[];
     education: Education[];
     testimonials: Testimonial[];
+    clients: Client[];
+    newsItems: string[];
+    contact: Contact;
 }
 
 export interface About {

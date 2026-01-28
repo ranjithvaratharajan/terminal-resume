@@ -1,6 +1,8 @@
-import { Component, inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, computed, AfterViewInit } from '@angular/core';
 import { ResumeRendererComponent } from '../resume-renderer/resume-renderer.component';
-import { NavigationService, Section } from '../../services/navigation.service';
+import { NavigationService } from '../../services/navigation.service';
+import { ResumeService } from '../../services/resume.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-terminal-shell',
@@ -28,6 +30,11 @@ import { NavigationService, Section } from '../../services/navigation.service';
                class="cmd-input"
                (keydown.enter)="handleCommand(cmdInput.value); cmdInput.value=''" 
                autofocus />
+      </div>
+      <div class="status-bar">
+        @for (item of newsItems(); track $index) {
+          <span class="ticker-item">{{ item }} &nbsp;&nbsp;&nbsp; +++ &nbsp;&nbsp;&nbsp; </span>
+        }
       </div>
     </div>
   `,
@@ -68,11 +75,33 @@ import { NavigationService, Section } from '../../services/navigation.service';
       overflow: hidden;
       animation: openWindow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       position: relative;
-      z-index: 201; /* Above CRT scanlines if needed, or let CRT overlay cover it. 
-                      Actually CRT is pointer-events-none z-index 200. 
-                      Let's keep this under the CRT effect for full retro feel. 
-                      So z-index auto or lower than 200. */
       z-index: 100;
+    }
+
+    /* Status Bar (Ticker) */
+    .status-bar {
+      height: 30px;
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid var(--secondary-color);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
+      color: var(--ubuntu-orange);
+      font-family: var(--font-stack);
+      font-size: 0.85em;
+      position: relative;
+    }
+    
+    .ticker-item {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 25s linear infinite;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
     }
     
     @keyframes openWindow {
@@ -81,57 +110,56 @@ import { NavigationService, Section } from '../../services/navigation.service';
     }
     
     .terminal-header {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 12px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      height: 30px;
+      background: rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      user-select: none;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .terminal-title {
-      color: var(--font-color);
+      color: #aaa;
       font-family: var(--font-stack);
-      font-size: 14px;
-      text-align: center;
-      flex-grow: 1;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+      font-size: 0.9em;
     }
 
     .terminal-controls {
+      position: absolute;
+      left: 10px;
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
     
     .control {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
     }
-    .control:hover { transform: scale(1.1); }
     
-    .close { background-color: #ff5f56; box-shadow: 0 0 8px #ff5f56; }
-    .minimize { background-color: #ffbd2e; box-shadow: 0 0 8px #ffbd2e; }
-    .maximize { background-color: #27c93f; box-shadow: 0 0 8px #27c93f; }
+    .close { background: #ff5f56; }
+    .minimize { background: #ffbd2e; }
+    .maximize { background: #27c93f; }
 
     .terminal-body {
-      display: flex;
       flex: 1;
+      padding: 0; 
       overflow: hidden;
       position: relative;
-      background: transparent; /* Let glass bg show through */
     }
     
     .main-content {
-      flex: 1;
-      padding: 0;
-      overflow: hidden;
-      position: relative;
+      height: 100%;
+      overflow-y: auto;
     }
+    
+    /* Scrollbar */
+    .main-content::-webkit-scrollbar { width: 10px; }
+    .main-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+    .main-content::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: 5px; }
+    .main-content::-webkit-scrollbar-thumb:hover { background: var(--ubuntu-orange); }
 
     .cli-input-line {
       display: flex;
@@ -173,7 +201,12 @@ import { NavigationService, Section } from '../../services/navigation.service';
 })
 export class TerminalShellComponent implements AfterViewInit {
   navService = inject(NavigationService);
-  @ViewChild('cmdInput') cmdInput!: ElementRef<HTMLInputElement>;
+  private resumeService = inject(ResumeService);
+
+  resumeData = toSignal(this.resumeService.getResume());
+  newsItems = computed(() => this.resumeData()?.newsItems || []);
+
+  @ViewChild('cmdInput') cmdInput!: ElementRef;
 
   ngAfterViewInit() {
     this.focusInput();
@@ -184,21 +217,14 @@ export class TerminalShellComponent implements AfterViewInit {
   }
 
   handleCommand(cmd: string) {
-    const command = cmd.trim().toLowerCase();
+    if (!cmd.trim()) return;
 
+    const command = cmd.toLowerCase().trim();
     if (command === 'clear') {
-      // For now clear just maps to help or about? Let's map to help
-      this.navService.navigate('help');
-      return;
-    }
-
-    const sections: Section[] = ['about', 'skills', 'experience', 'education', 'testimonials', 'contact', 'help'];
-
-    if (sections.includes(command as Section)) {
-      this.navService.navigate(command as Section);
+      // simple clear
+    } else if (['about', 'skills', 'experience', 'education', 'testimonials', 'clients', 'contact', 'help'].includes(command)) {
+      this.navService.navigate(command as any);
     } else {
-      // Optional: Handle unknown command
-      // For now, just stay or maybe go to help
     }
   }
 }

@@ -14,17 +14,21 @@ import { ResumeService } from '../../services/resume.service';
         @switch (navService.currentSection()) {
           @case ('about') {
             <div class="section about typing-container">
-              <h2 class="section-header"><span class="cmd-prefix">$</span> cat ./about</h2>
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> cat ./about</span>
+                <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+              </h2>
               <div class="about-card fade-in">
                 <div class="profile-header">
                   <div class="ascii-art">
                      <!-- Simple ASCII placeholder for an image/avatar -->
                      <pre>
-    .---.
-   /     \\
-   | (o) |
-   \\     /
-    '---'
+██████╗ ██╗   ██╗
+██╔══██╗██║   ██║
+██████╔╝██║   ██║
+██╔══██╗╚██╗ ██╔╝
+██║  ██║ ╚████╔╝ 
+╚═╝  ╚═╝  ╚═══╝  
                      </pre>
                   </div>
                   <div>
@@ -48,7 +52,10 @@ import { ResumeService } from '../../services/resume.service';
           }
           @case ('experience') {
             <div class="section experience">
-              <h2 class="section-header"><span class="cmd-prefix">$</span> git log --graph --oneline</h2>
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> git log --graph --oneline</span>
+                <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+              </h2>
               <div class="git-graph">
                 @for (job of data.experience; track job.id; let first = $first) {
                   <div class="commit-node fade-in" [style.animation-delay]="job.id * 100 + 'ms'">
@@ -81,7 +88,10 @@ import { ResumeService } from '../../services/resume.service';
           }
           @case ('education') {
             <div class="section education">
-              <h2 class="section-header"><span class="cmd-prefix">$</span> cat ./education</h2>
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> cat ./education</span>
+                <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+              </h2>
               <div class="json-output">
                 @for (edu of data.education; track edu.id) {
                   <div class="json-block fade-in" [style.animation-delay]="edu.id * 100 + 'ms'">
@@ -103,7 +113,10 @@ import { ResumeService } from '../../services/resume.service';
           }
           @case ('skills') {
             <div class="section skills">
-               <h2 class="section-header"><span class="cmd-prefix">$</span> ./show_stats.sh</h2>
+               <h2 class="section-header">
+                 <span class="cmd"><span class="cmd-prefix">$</span> ./show_stats.sh</span>
+                 <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+               </h2>
                <div class="skills-grid">
                  @for (skill of data.skills; track skill.id) {
                    <div class="skill-row fade-in" [style.animation-delay]="skill.id * 50 + 'ms'">
@@ -120,7 +133,10 @@ import { ResumeService } from '../../services/resume.service';
           }
           @case ('testimonials') {
              <div class="section testimonials">
-                <h2 class="section-header"><span class="cmd-prefix">$</span> tail -n 10 user_reviews.log</h2>
+                <h2 class="section-header">
+                  <span class="cmd"><span class="cmd-prefix">$</span> tail -n 10 user_reviews.log</span>
+                  <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+                </h2>
                 @for (t of data.testimonials; track t.id) {
                   <div class="log-entry fade-in" [style.animation-delay]="t.id * 100 + 'ms'">
                     <span class="log-date">[INFO]</span> 
@@ -131,9 +147,30 @@ import { ResumeService } from '../../services/resume.service';
                 }
              </div>
           }
+          @case ('clients') {
+            <div class="section clients">
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> ls ./clients</span>
+                <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+              </h2>
+              <div class="clients-grid">
+                @for (client of data.clients; track client.id) {
+                  <div class="client-card fade-in" [style.animation-delay]="client.id * 100 + 'ms'">
+                     <div class="client-logo">
+                       <pre>{{ client.logoAscii }}</pre>
+                     </div>
+                     <div class="client-name">{{ client.name }}</div>
+                  </div>
+                }
+              </div>
+            </div>
+          }
           @case ('contact') {
             <div class="section contact">
-              <h2 class="section-header"><span class="cmd-prefix">$</span> ping -c 4 varanjith.com</h2>
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> ping -c 4 varanjith.com</span>
+                <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+              </h2>
               <div class="ping-stats fade-in">
                 <div>PING varanjith.com (127.0.0.1): 56 data bytes</div>
                 <br>
@@ -153,7 +190,9 @@ import { ResumeService } from '../../services/resume.service';
           }
           @case ('help') {
             <div class="section help">
-              <h2 class="section-header"><span class="cmd-prefix">$</span> help</h2>
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> help</span>
+              </h2>
               <p>GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)</p>
               <p>These shell commands are defined internally.  Type 'help' to see this list.</p>
               <br>
@@ -162,6 +201,7 @@ import { ResumeService } from '../../services/resume.service';
                 <li><button (click)="navService.navigate('skills')">> skills</button> <span class="comment"># Analyze technical competencies</span></li>
                 <li><button (click)="navService.navigate('experience')">> experience</button> <span class="comment"># Print work history log</span></li>
                 <li><button (click)="navService.navigate('education')">> education</button> <span class="comment"># List academic records</span></li>
+                <li><button (click)="navService.navigate('clients')">> clients</button> <span class="comment"># View client history</span></li>
                 <li><button (click)="navService.navigate('testimonials')">> testimonials</button> <span class="comment"># Read system logs/reviews</span></li>
                 <li><button (click)="navService.navigate('contact')">> contact</button> <span class="comment"># Establish connection</span></li>
               </ul>
@@ -187,8 +227,28 @@ import { ResumeService } from '../../services/resume.service';
       margin-bottom: 1.5em;
       border-bottom: 1px dashed var(--secondary-color);
       padding-bottom: 0.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .cmd-prefix { color: var(--neon-green); margin-right: 0.5em; }
+    
+    .back-btn {
+      background: transparent;
+      border: 1px solid var(--secondary-color);
+      color: var(--secondary-color);
+      font-family: inherit;
+      padding: 2px 8px;
+      cursor: pointer;
+      font-size: 0.7em;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .back-btn:hover {
+      border-color: var(--ubuntu-orange);
+      color: var(--ubuntu-orange);
+      box-shadow: 0 0 5px var(--ubuntu-orange);
+    }
     
     /* Animations */
     .fade-in {
@@ -206,8 +266,27 @@ import { ResumeService } from '../../services/resume.service';
     /* About Section */
     .profile-header { display: flex; gap: 2em; align-items: center; margin-bottom: 2em; }
     .ascii-art pre { 
-        font-size: 10px; line-height: 10px; color: var(--ubuntu-purple); 
-        text-shadow: 0 0 5px var(--ubuntu-purple);
+        font-size: 12px; 
+        line-height: 12px; 
+        font-weight: bold;
+        background: linear-gradient(135deg, var(--neon-pink), #fff, var(--neon-blue));
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(255, 42, 109, 0.8));
+        animation: gradientFlow 3s ease infinite;
+        text-align: center;
+    }
+    .ascii-art {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 140px; /* Ensure generic spacing */
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .name { color: var(--neon-pink); text-shadow: 0 0 5px var(--neon-pink); margin: 0; font-size: 2em;}
     .role { color: var(--neon-blue); margin-top: 0.5em; }
@@ -256,6 +335,45 @@ import { ResumeService } from '../../services/resume.service';
         text-shadow: 0 0 5px var(--neon-green);
     }
     .percent { color: #fff; font-size: 0.8em; }
+
+    /* Clients Section */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5em;
+    }
+    .client-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--secondary-color);
+      border-radius: 8px;
+      padding: 1em;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .client-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    }
+    .client-logo pre {
+      font-size: 10px;
+      line-height: 10px;
+      font-weight: bold;
+      color: var(--neon-blue);
+      margin-bottom: 1em;
+      white-space: pre;
+      overflow: hidden;
+    }
+    .client-card:hover .client-logo pre {
+      color: var(--neon-pink);
+      text-shadow: 0 0 5px var(--neon-pink);
+    }
+    .client-name {
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
 
     /* Testimonials (Logs) */
     .log-entry { margin-bottom: 1.5em; font-family: monospace; font-size: 0.9em; border-left: 2px solid var(--ubuntu-purple); padding-left: 10px; }
