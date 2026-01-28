@@ -1,15 +1,20 @@
 import { Component, inject, ViewChild, ElementRef, computed, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ResumeRendererComponent } from '../resume-renderer/resume-renderer.component';
+import { BootSequenceComponent } from '../boot-sequence/boot-sequence.component';
 import { NavigationService } from '../../services/navigation.service';
 import { ResumeService } from '../../services/resume.service';
+import { ThemeService } from '../../services/theme.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-terminal-shell',
   standalone: true,
-  imports: [ResumeRendererComponent],
+  imports: [CommonModule, ResumeRendererComponent, BootSequenceComponent],
   template: `
-    <div class="terminal-window" (click)="focusInput()">
+    <app-boot-sequence *ngIf="!bootFinished" (bootComplete)="onBootComplete()"></app-boot-sequence>
+    
+    <div class="terminal-window" *ngIf="bootFinished" (click)="focusInput()">
       <header class="terminal-header">
         <div class="terminal-title">user@resume: ~</div>
         <div class="terminal-controls">
@@ -202,14 +207,24 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class TerminalShellComponent implements AfterViewInit {
   navService = inject(NavigationService);
   private resumeService = inject(ResumeService);
+  private themeService = inject(ThemeService);
+
+  bootFinished = false;
 
   resumeData = toSignal(this.resumeService.getResume());
   newsItems = computed(() => this.resumeData()?.newsItems || []);
 
   @ViewChild('cmdInput') cmdInput!: ElementRef;
 
+  onBootComplete() {
+    this.bootFinished = true;
+    setTimeout(() => this.focusInput(), 100);
+  }
+
   ngAfterViewInit() {
-    this.focusInput();
+    if (this.bootFinished) {
+      this.focusInput();
+    }
   }
 
   focusInput() {
@@ -219,12 +234,28 @@ export class TerminalShellComponent implements AfterViewInit {
   handleCommand(cmd: string) {
     if (!cmd.trim()) return;
 
-    const command = cmd.toLowerCase().trim();
+    const parts = cmd.trim().split(' ');
+    const command = parts[0].toLowerCase();
+    const arg = parts[1]?.toLowerCase();
+
     if (command === 'clear') {
-      // simple clear
+      // simple clear (visual only in this context)
+    } else if (command === 'theme') {
+      if (arg === 'list') {
+        // This is a special case. Since we don't have a real stdout buffer, 
+        // we'll trigger a 'help' navigation which we should update to show themes, 
+        // or we can just blindly switch if they guess it.
+        // For now, let's assume valid themes are: ubuntu, matrix, amber, cyberpunk, dracula, macos
+        // We'll just define the switcher logic here.
+        console.log('Available themes: ubuntu, matrix, amber, cyberpunk, dracula, macos');
+      } else if (arg && ['ubuntu', 'matrix', 'amber', 'cyberpunk', 'dracula', 'macos'].includes(arg)) {
+        this.themeService.setTheme(arg);
+      }
     } else if (['about', 'skills', 'experience', 'education', 'testimonials', 'clients', 'contact', 'help'].includes(command)) {
       this.navService.navigate(command as any);
-    } else {
     }
+
+    // Always refocus
+    setTimeout(() => this.cmdInput.nativeElement.scrollIntoView(), 10);
   }
 }

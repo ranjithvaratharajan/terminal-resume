@@ -204,6 +204,9 @@ import { ResumeService } from '../../services/resume.service';
                 <li><button (click)="navService.navigate('clients')">> clients</button> <span class="comment"># View client history</span></li>
                 <li><button (click)="navService.navigate('testimonials')">> testimonials</button> <span class="comment"># Read system logs/reviews</span></li>
                 <li><button (click)="navService.navigate('contact')">> contact</button> <span class="comment"># Establish connection</span></li>
+                <li style="margin-top: 1em; border-top: 1px dashed var(--secondary-color); padding-top: 1em;">
+                   <span class="cmd-prefix">$</span> theme [name] <span class="comment"># Switch theme (matrix, cyberpunk, macos, etc)</span>
+                </li>
               </ul>
             </div>
           }
