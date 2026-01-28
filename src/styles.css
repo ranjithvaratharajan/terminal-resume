@@ -1,13 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap');
+
 :root {
-  --global-font-size: 15px;
-  --global-line-height: 1.4em;
+  --global-font-size: 16px;
+  --global-line-height: 1.5em;
   --global-space: 10px;
-  --font-stack: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
-  --primary-color: #00ff41; /* classic matrix green */
-  --secondary-color: #727578;
-  --background-color: #0d1117; /* slightly softer black */
-  --surface-color: #161b22;
-  --font-color: #f0f6fc;
+  --font-stack: "Fira Code", "Ubuntu Mono", "Consolas", monospace;
+
+  /* Cyberpunk / Ubuntu Neon Palette */
+  --primary-color: #00ff41;
+  /* Fallback Green */
+  --ubuntu-orange: #E95420;
+  --ubuntu-purple: #772953;
+  --neon-pink: #ff2a6d;
+  --neon-blue: #05d9e8;
+  --neon-green: #00ff41;
+  --text-glow: 0 0 10px rgba(0, 255, 65, 0.5);
+
+  --secondary-color: #5c5c5c;
+  --background-color: #1a0b17;
+  /* Very Dark Aubergine */
+  --glass-bg: rgba(48, 10, 36, 0.85);
+
+  --font-color: #d1d5db;
 }
 
 * {
@@ -15,9 +29,75 @@
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: #000;
+  /* Black behind the glass */
   color: var(--font-color);
   font-family: var(--font-stack);
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* CRT EFFECTS */
+body::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06));
+  z-index: 200;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Glow & Flicker */
+body {
+  text-shadow: 0 0 2px rgba(228, 228, 228, 0.2);
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.98;
+  }
+
+  5% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.98;
+  }
+
+  100% {
+    opacity: 0.98;
+  }
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ubuntu-orange);
 }
 
 .terminal-alert {

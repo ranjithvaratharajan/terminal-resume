@@ -7,47 +7,60 @@ import { NavigationService, Section } from '../../services/navigation.service';
   standalone: true,
   imports: [TitleCasePipe],
   template: `
-    <nav class="sidebar-menu">
-      <ul>
-        @for (item of items; track item) {
-          <li>
-            <a [class.active]="navService.currentSection() === item" 
-               (click)="navService.navigate(item)">
-               {{ item | titlecase }}
-            </a>
-          </li>
-        }
-      </ul>
+    <nav class="tab-bar">
+      @for (item of items; track item) {
+        <a [class.active]="navService.currentSection() === item"
+           (click)="navService.navigate(item)">
+           {{ item }}
+        </a>
+      }
     </nav>
   `,
   styles: [`
-    .sidebar-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar-menu li {
-      margin-bottom: 0.5em;
-    }
-    .sidebar-menu a {
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--secondary-color);
-      display: block;
-      padding: 5px;
-    }
-    .sidebar-menu a:hover, .sidebar-menu a.active {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-    }
-    .sidebar-menu a::before {
-      content: '> ';
+    .tab-bar {
+      display: flex;
+      background-color: #3e3e3e; /* Tab bar background */
+      padding-top: 5px;
+      padding-left: 10px;
+      border-bottom: 1px solid var(--secondary-color);
+      user-select: none;
     }
     
-    @media (min-width: 768px) {
-      .sidebar-menu a {
-        display: block;
-        width: 100%;
+    a {
+      padding: 5px 15px;
+      margin-right: 2px;
+      background-color: #2c2c2c; /* Inactive tab bg */
+      color: #999;
+      text-decoration: none;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    a:hover {
+      background-color: #383838;
+      color: #ccc;
+    }
+    
+    a.active {
+      background-color: var(--background-color); /* Matches terminal body */
+      color: var(--primary-color);
+      font-weight: bold;
+      z-index: 1; /* Sit above the border */
+    }
+    
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .tab-bar {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 0;
+      }
+      a {
+        padding: 8px 15px; /* Larger hit area */
       }
     }
   `]
