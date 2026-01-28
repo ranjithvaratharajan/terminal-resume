@@ -2,18 +2,23 @@ import { Component, inject, ViewChild, ElementRef, computed, AfterViewInit } fro
 import { CommonModule } from '@angular/common';
 import { ResumeRendererComponent } from '../resume-renderer/resume-renderer.component';
 import { BootSequenceComponent } from '../boot-sequence/boot-sequence.component';
+import { ScreensaverComponent } from '../screensaver/screensaver.component';
 import { NavigationService } from '../../services/navigation.service';
 import { ResumeService } from '../../services/resume.service';
 import { ThemeService } from '../../services/theme.service';
+import { IdleService } from '../../services/idle.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-terminal-shell',
   standalone: true,
-  imports: [CommonModule, ResumeRendererComponent, BootSequenceComponent],
+  imports: [CommonModule, ResumeRendererComponent, BootSequenceComponent, ScreensaverComponent],
   template: `
     <app-boot-sequence *ngIf="!bootFinished" (bootComplete)="onBootComplete()"></app-boot-sequence>
     
+    <!-- Screensaver sits on top when idle AND boot is done -->
+    <app-screensaver *ngIf="bootFinished && idleService.isIdle()"></app-screensaver>
+
     <div class="terminal-window" *ngIf="bootFinished" (click)="focusInput()">
       <header class="terminal-header">
         <div class="terminal-title">user@resume: ~</div>
@@ -37,9 +42,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
                autofocus />
       </div>
       <div class="status-bar">
-        @for (item of newsItems(); track $index) {
-          <span class="ticker-item">{{ item }} &nbsp;&nbsp;&nbsp; +++ &nbsp;&nbsp;&nbsp; </span>
-        }
+        <div class="ticker-track">
+           <span class="ticker-content">{{ tickerContent() }}</span>
+           <!-- Duplicate for seamless loop -->
+           <span class="ticker-content">{{ tickerContent() }}</span>
+        </div>
       </div>
     </div>
   `,
@@ -78,40 +85,17 @@ import { toSignal } from '@angular/core/rxjs-interop';
         0 0 60px rgba(0, 0, 0, 0.5);
         
       overflow: hidden;
-      animation: openWindow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      animation: crtTurnOn 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       position: relative;
       z-index: 100;
     }
 
-    /* Status Bar (Ticker) */
-    .status-bar {
-      height: 30px;
-      background: rgba(0, 0, 0, 0.8);
-      border-top: 1px solid var(--secondary-color);
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      white-space: nowrap;
-      color: var(--ubuntu-orange);
-      font-family: var(--font-stack);
-      font-size: 0.85em;
-      position: relative;
-    }
-    
-    .ticker-item {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 25s linear infinite;
-    }
-    
-    @keyframes marquee {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
-    }
-    
-    @keyframes openWindow {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    /* CRT Turn On Animation */
+    @keyframes crtTurnOn {
+      0% { transform: scale(0.1) scaleY(0.01); opacity: 0; filter: brightness(3); }
+      40% { transform: scale(0.1) scaleY(0.01); opacity: 1; filter: brightness(3); }
+      60% { transform: scale(1) scaleY(0.01); opacity: 1; filter: brightness(2); }
+      100% { transform: scale(1) scaleY(1); opacity: 1; filter: brightness(1); }
     }
     
     .terminal-header {
@@ -129,7 +113,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
       font-family: var(--font-stack);
       font-size: 0.9em;
     }
-
+    
     .terminal-controls {
       position: absolute;
       left: 10px;
@@ -147,7 +131,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     .close { background: #ff5f56; }
     .minimize { background: #ffbd2e; }
     .maximize { background: #27c93f; }
-
+    
     .terminal-body {
       flex: 1;
       padding: 0; 
@@ -191,6 +175,41 @@ import { toSignal } from '@angular/core/rxjs-interop';
       outline: none;
       caret-color: var(--neon-pink); /* Cool cursor color */
     }
+
+    .status-bar {
+      height: 30px; /* Slightly taller for readability */
+      background: #000; /* Max contrast background */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      font-size: 14px; /* Fixed legible size */
+      font-family: 'Consolas', 'Monaco', monospace;
+      border-top: 1px solid var(--primary-color);
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    }
+    
+    .ticker-track {
+      display: flex;
+      animation: ticker 45s linear infinite; /* Much slower */
+      width: max-content;
+    }
+
+    .ticker-content {
+      padding-right: 50px;
+      font-weight: bold;
+      color: var(--primary-color); /* Match theme's brightest color */
+      text-shadow: 0 0 5px var(--primary-color); /* Glow */
+      letter-spacing: 1px;
+    }
+    
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
     
     @media (max-width: 768px) {
       :host { padding: 0; }
@@ -208,11 +227,18 @@ export class TerminalShellComponent implements AfterViewInit {
   navService = inject(NavigationService);
   private resumeService = inject(ResumeService);
   private themeService = inject(ThemeService);
+  idleService = inject(IdleService);
 
   bootFinished = false;
 
   resumeData = toSignal(this.resumeService.getResume());
   newsItems = computed(() => this.resumeData()?.newsItems || []);
+
+  // Join all items for the ticker
+  tickerContent = computed(() => {
+    const items = this.newsItems();
+    return items.length ? items.join('   +++   ') + '   +++   ' : '';
+  });
 
   @ViewChild('cmdInput') cmdInput!: ElementRef;
 
@@ -242,11 +268,6 @@ export class TerminalShellComponent implements AfterViewInit {
       // simple clear (visual only in this context)
     } else if (command === 'theme') {
       if (arg === 'list') {
-        // This is a special case. Since we don't have a real stdout buffer, 
-        // we'll trigger a 'help' navigation which we should update to show themes, 
-        // or we can just blindly switch if they guess it.
-        // For now, let's assume valid themes are: ubuntu, matrix, amber, cyberpunk, dracula, macos
-        // We'll just define the switcher logic here.
         console.log('Available themes: ubuntu, matrix, amber, cyberpunk, dracula, macos');
       } else if (arg && ['ubuntu', 'matrix', 'amber', 'cyberpunk', 'dracula', 'macos'].includes(arg)) {
         this.themeService.setTheme(arg);

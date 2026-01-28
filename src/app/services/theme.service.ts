@@ -11,7 +11,7 @@ export interface Theme {
     providedIn: 'root'
 })
 export class ThemeService {
-    private activeTheme = signal<string>('ubuntu');
+    activeTheme = signal<string>('ubuntu');
 
     readonly themes: Record<string, Theme> = {
         ubuntu: {
