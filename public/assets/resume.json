@@ -1,0 +1,197 @@
+{
+    "about": {
+        "name": "Ranjith Varatharajan",
+        "title": "Application Development Specialist",
+        "tagline": "Design is passion | Code is poetry",
+        "summary": "Hello there, I am an Application Development Specialist, working for Accenture India and lives in Coimbatore.",
+        "profile_image_url": "https://api.varanjith.com/uploads/6857361711423.jpg",
+        "cv_file_url": "https://varanjith.com/api/uploads/6857d7842c7e7.pdf"
+    },
+    "experience": [
+        {
+            "id": 1,
+            "startDate": "Feb 2022",
+            "endDate": "Present",
+            "title": "Application Development Specialist",
+            "company": "Accenture India",
+            "description": "I am full-stack developer working with ASP.NET Web Forms, MVC, Angular, C# and SQL Server. I am currently a front-end software engineer of a small but dedicated team in our Engineering Solutions Team. This team is responsible for troubleshooting client issues and providing fixes in a quick turn around. We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+        },
+        {
+            "id": 2,
+            "startDate": "Apr 2021",
+            "endDate": "Feb 2022",
+            "title": "Technical Lead",
+            "company": "L&T Technology Services",
+            "description": "I am full-stack developer working with ASP.NET Web Forms, MVC, Angular, C# and SQL Server. I am currently a front-end software engineer of a small but dedicated team in our Engineering Solutions Team. This team is responsible for troubleshooting client issues and providing fixes in a quick turn around. We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+        },
+        {
+            "id": 3,
+            "startDate": "Sep 2018",
+            "endDate": "Apr 2021",
+            "title": "Senior Software Engineer",
+            "company": "L&T Technology Services",
+            "description": "We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+        },
+        {
+            "id": 4,
+            "startDate": "Oct 2017",
+            "endDate": "Sep 2018",
+            "title": "Software Engineer",
+            "company": "Saggezza India Pvt. Ltd.",
+            "description": "Made changes and fixes to an existing ecommerce application. Started on large scale web/data mining project. Maintained a high level of quality. Worked on large projects while maintaining deadline and high quality. Used SSIS/SSRS to create reports for the application."
+        },
+        {
+            "id": 5,
+            "startDate": "Jan 2015",
+            "endDate": "Sep 2017",
+            "title": "Implementation Engineer",
+            "company": "Saggezza India Pvt. Ltd.",
+            "description": "We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+        }
+    ],
+    "education": [
+        {
+            "id": 1,
+            "startYear": "2010",
+            "endYear": "2014",
+            "title": "Bachelor of Technology",
+            "name": "Kalasalingam University",
+            "class": "First Class"
+        }
+    ],
+    "skills": [
+        {
+            "id": 1,
+            "title": "TypeScript",
+            "percentage": 90
+        },
+        {
+            "id": 2,
+            "title": "Angular",
+            "percentage": 90
+        },
+        {
+            "id": 3,
+            "title": "Javascript",
+            "percentage": 85
+        },
+        {
+            "id": 4,
+            "title": "C#",
+            "percentage": 85
+        },
+        {
+            "id": 5,
+            "title": ".NET",
+            "percentage": 85
+        },
+        {
+            "id": 6,
+            "title": "SQL Server",
+            "percentage": 85
+        },
+        {
+            "id": 7,
+            "title": "HTML5",
+            "percentage": 90
+        },
+        {
+            "id": 8,
+            "title": "CSS3",
+            "percentage": 90
+        },
+        {
+            "id": 9,
+            "title": "Redis",
+            "percentage": 90
+        }
+    ],
+    "projects": [],
+    "testimonials": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "position": "Project Manager",
+            "comments": "Ranjith is an exceptional developer who always delivers high-quality code on time."
+        },
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "position": "Tech Lead",
+            "comments": "Great problem solver and a team player. Highly recommended!"
+        }
+    ],
+    "clients": [
+        {
+            "id": 1,
+            "name": "Google",
+            "logoAscii": "  G  "
+        },
+        {
+            "id": 2,
+            "name": "Microsoft",
+            "logoAscii": "  M  "
+        },
+        {
+            "id": 3,
+            "name": "Netflix",
+            "logoAscii": "  N  "
+        },
+        {
+            "id": 4,
+            "name": "Amazon",
+            "logoAscii": "  A  "
+        },
+        {
+            "id": 5,
+            "name": "Apple",
+            "logoAscii": "  A  "
+        },
+        {
+            "id": 6,
+            "name": "Tesla",
+            "logoAscii": "  T  "
+        },
+        {
+            "id": 7,
+            "name": "SpaceX",
+            "logoAscii": "  S  "
+        },
+        {
+            "id": 8,
+            "name": "Meta",
+            "logoAscii": "  M  "
+        },
+        {
+            "id": 9,
+            "name": "Nvidia",
+            "logoAscii": "  N  "
+        }
+    ],
+    "contact": {
+        "email": "ranjith.varatharajan@gmail.com",
+        "phone": "+91 9600 240 762",
+        "location": "Coimbatore, India",
+        "social": [
+            {
+                "platform": "LinkedIn",
+                "url": "https://linkedin.com/in/ranjithvaratharajan"
+            },
+            {
+                "platform": "GitHub",
+                "url": "https://github.com/ranjithvaratharajan"
+            },
+            {
+                "platform": "Twitter",
+                "url": "https://twitter.com/ranjithvaratharajan"
+            }
+        ]
+    },
+    "newsItems": [
+        "LATEST: Ranjith deploys new Angular Resume v2.0",
+        "UPDATE: Mastering RxJS and Signals for high performance",
+        "STATUS: Available for new opportunities worldwide",
+        "ALERT: System operating at 100% capacity",
+        "WEATHER: 25°C in the digital realm"
+    ]
+}

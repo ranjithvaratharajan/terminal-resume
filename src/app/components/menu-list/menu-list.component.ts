@@ -1,11 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { TitleCasePipe } from '@angular/common';
 import { NavigationService, Section } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-menu-list',
   standalone: true,
-  imports: [TitleCasePipe],
   template: `
     <nav class="tab-bar">
       @for (item of items; track item) {
