@@ -35,10 +35,10 @@ jobs:
         # The local folder containing the build artifacts
         local-dir: ./dist/terminal-resume/browser/
         # The remote folder on Spaceship (usually public_html or subfolder)
-        server-dir: ./
+        server-dir: ./public_html/
         protocol: ftps
         # Delete files on the server that are NOT in the local build (Clean Deploy)
-        delete: true
+        dangerous-clean-slate: true
         exclude: |
           **/.git*
           **/.git*/**
