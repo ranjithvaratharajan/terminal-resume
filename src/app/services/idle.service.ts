@@ -20,6 +20,7 @@ export class IdleService implements OnDestroy {
             window.addEventListener('keydown', this.resetTimer.bind(this));
             window.addEventListener('click', this.resetTimer.bind(this));
             window.addEventListener('scroll', this.resetTimer.bind(this));
+            window.addEventListener('touchstart', this.resetTimer.bind(this));
         }
     }
 
@@ -29,6 +30,7 @@ export class IdleService implements OnDestroy {
             window.removeEventListener('keydown', this.resetTimer.bind(this));
             window.removeEventListener('click', this.resetTimer.bind(this));
             window.removeEventListener('scroll', this.resetTimer.bind(this));
+            window.removeEventListener('touchstart', this.resetTimer.bind(this));
         }
     }
 

@@ -58,6 +58,12 @@ import { SoundService } from '../../services/sound.service';
       text-shadow: 0 0 10px var(--neon-green, #0f0);
     }
 
+    @media (max-width: 768px) {
+      .start-overlay .blink {
+        font-size: 1em;
+      }
+    }
+
     .boot-line {
       margin-bottom: 2px;
       white-space: pre-wrap;
