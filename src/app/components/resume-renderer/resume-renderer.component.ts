@@ -185,10 +185,10 @@ import { ResumeService } from '../../services/resume.service';
               <div class="ping-stats fade-in">
                 <div>PING varanjith.com (127.0.0.1): 56 data bytes</div>
                 <br>
-                <div>64 bytes from {{ data.contact.email }}: icmp_seq=0 ttl=64 time=0.045 ms</div>
-                <div>64 bytes from {{ data.contact.phone }}: icmp_seq=1 ttl=64 time=0.045 ms</div>
+                <div>64 bytes from <span class="highlight">{{ data.contact.email }}</span>: icmp_seq=0 ttl=64 time=0.045 ms</div>
+                <div>64 bytes from <span class="highlight">{{ data.contact.phone }}</span>: icmp_seq=1 ttl=64 time=0.045 ms</div>
                 @if (data.contact.location) {
-                  <div>64 bytes from {{ data.contact.location }}: icmp_seq=2 ttl=64 time=0.045 ms</div>
+                  <div>64 bytes from <span class="highlight">{{ data.contact.location }}</span>: icmp_seq=2 ttl=64 time=0.045 ms</div>
                 }
                 <br>
                 <div class="social-block">
@@ -428,6 +428,12 @@ import { ResumeService } from '../../services/resume.service';
     }
     .command-list button:hover { text-decoration: underline; text-shadow: 0 0 5px var(--neon-green); }
     .comment { color: #666; font-style: italic; }
+
+    .highlight {
+      color: var(--neon-pink);
+      font-weight: bold;
+      text-shadow: 0 0 5px var(--neon-pink);
+    }
 
     @media (max-width: 600px) {
        .profile-header { flex-direction: column; text-align: center; }
