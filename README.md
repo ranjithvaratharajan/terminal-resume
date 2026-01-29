@@ -12,6 +12,8 @@
 *   **Interactive Shell**: Type commands like `about`, `skills`, `experience`, or `contact`.
 *   **Idle Protocol**: A Matrix Digital Rain screensaver activates after 30 seconds of inactivity.
 *   **News Ticker**: Seamless scrolling marquee with live updates.
+*   **Hex-Dump Skills**: Technical competencies displayed as a system memory dump with animated capacity bars.
+*   **Matrix Text Decryption**: "Hacker"-style text scrambling effect on page load (optimized for desktop).
 *   **Theme Engine**: Switch between `ubuntu`, `matrix`, `cyberpunk`, `dracula`, and more.
 *   **External Data**: All resume content is decoupled in `assets/resume.json` for easy updates.
 

@@ -20,7 +20,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
     <app-screensaver *ngIf="bootFinished && idleService.isIdle()"></app-screensaver>
 
     <div class="terminal-window" *ngIf="bootFinished" (click)="focusInput()">
-      <div class="scanline-overlay"></div>
       <header class="terminal-header">
         <div class="terminal-title">user@resume: ~</div>
         <div class="terminal-controls">
@@ -223,36 +222,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
       .terminal-title { text-align: left; margin-left: 0; }
     }
 
-    /* CRT Effects */
-    .scanline-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0) 50%,
-        rgba(0, 0, 0, 0.2) 50%,
-        rgba(0, 0, 0, 0.2)
-      );
-      background-size: 100% 4px;
-      pointer-events: none;
-      z-index: 500;
-      opacity: 0.6;
-    }
-
-    /* Screen Flicker & RGB Split */
-    .terminal-body, .cli-input-line, .status-bar {
-      animation: flicker 0.15s infinite;
-      text-shadow: 2px 0 1px rgba(255, 0, 0, 0.3), -2px 0 1px rgba(0, 255, 255, 0.3);
-    }
-
-    @keyframes flicker {
-      0% { opacity: 0.98; }
-      50% { opacity: 0.95; }
-      100% { opacity: 0.99; }
+      .terminal-title { text-align: left; margin-left: 0; }
     }
   `]
 })
