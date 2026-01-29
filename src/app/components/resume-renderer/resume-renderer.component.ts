@@ -1,13 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
+import { MatrixTextComponent } from '../matrix-text/matrix-text.component';
 import { NavigationService } from '../../services/navigation.service';
 import { ResumeService } from '../../services/resume.service';
 
 @Component({
   selector: 'app-resume-renderer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatrixTextComponent],
   template: `
     @if (resume(); as data) {
       <div class="content-area">
@@ -32,8 +33,8 @@ import { ResumeService } from '../../services/resume.service';
                      </pre>
                   </div>
                   <div>
-                    <h1 class="name">{{ data.about.name }}</h1>
-                    <h3 class="role">> {{ data.about.title }} <span class="blink">_</span></h3>
+                    <h1 class="name"><app-matrix-text [text]="data.about.name" [speed]="50"></app-matrix-text></h1>
+                    <h3 class="role">> <app-matrix-text [text]="data.about.title" [delay]="500"></app-matrix-text> <span class="blink">_</span></h3>
                   </div>
                 </div>
                 
@@ -117,17 +118,27 @@ import { ResumeService } from '../../services/resume.service';
                  <span class="cmd"><span class="cmd-prefix">$</span> ./show_stats.sh</span>
                  <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
                </h2>
-               <div class="skills-grid">
-                 @for (skill of data.skills; track skill.id) {
-                   <div class="skill-row fade-in" [style.animation-delay]="skill.id * 50 + 'ms'">
-                     <span class="skill-name">{{ skill.title }}</span>
-                     <div class="ascii-progress">
-                       <span class="filled" [style.width.%]="skill.percentage">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
-                       <span class="empty">░░░░░░░░░░░░░░░░░░░░</span>
-                     </div>
-                     <span class="percent">{{ skill.percentage }}%</span>
-                   </div>
-                 }
+               <div class="hex-dump">
+                  <div class="hex-header">
+                    <span class="col-addr">ADDR</span>
+                    <span class="col-module">MODULE</span>
+                    <span class="col-status">STATUS</span>
+                    <span class="col-capacity">CAPACITY</span>
+                  </div>
+                  @for (skill of data.skills; track skill.id) {
+                    <div class="hex-row fade-in" [style.animation-delay]="skill.id * 50 + 'ms'">
+                      <span class="col-addr">{{ getHexAddress(skill.id) }}</span>
+                      <span class="col-module">{{ skill.title }}</span>
+                      <span class="col-status" [ngClass]="getStatusColor(skill.percentage)">{{ getStatus(skill.percentage) }}</span>
+                      <div class="col-capacity">
+                        <div class="ascii-progress">
+                          <span class="filled" [style.width.%]="skill.percentage">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+                          <span class="empty">░░░░░░░░░░░░░░░░░░░░</span>
+                        </div>
+                        <span class="percent">{{ skill.percentage }}%</span>
+                      </div>
+                    </div>
+                  }
                </div>
             </div>
           }
@@ -325,10 +336,19 @@ import { ResumeService } from '../../services/resume.service';
     .string { color: var(--ubuntu-orange); }
     .indent { margin-left: 20px; }
 
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1em; }
-    .skill-row { display: flex; align-items: center; gap: 10px; font-family: monospace; }
-    .skill-name { width: 120px; text-align: right; color: var(--neon-blue); }
+    /* Hex Dump Skills */
+    .hex-dump { font-family: monospace; width: 100%; max-width: 800px; display: table; border-collapse: collapse; }
+    .hex-header { display: table-header-group; border-bottom: 2px dashed var(--secondary-color); font-weight: bold; color: var(--ubuntu-orange); }
+    .hex-row { display: table-row; }
+    .hex-row:hover { background: rgba(255, 255, 255, 0.05); }
+    
+    .col-addr, .col-module, .col-status, .col-capacity { display: table-cell; padding: 5px 10px; vertical-align: middle; }
+    
+    .col-addr { color: #666; width: 80px; }
+    .col-module { color: var(--neon-blue); width: 200px; }
+    .col-status { width: 120px; }
+    .col-capacity { display: flex; align-items: center; gap: 10px; }
+    
     .ascii-progress { 
         position: relative; color: var(--secondary-color); overflow: hidden;
         width: 20ch; white-space: nowrap; 
@@ -336,8 +356,19 @@ import { ResumeService } from '../../services/resume.service';
     .ascii-progress .filled { 
         position: absolute; top:0; left:0; color: var(--neon-green); overflow: hidden; 
         text-shadow: 0 0 5px var(--neon-green);
+        animation: fillBar 1.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
-    .percent { color: #fff; font-size: 0.8em; }
+    @keyframes fillBar { from { width: 0%; } }
+    .percent { color: #fff; font-size: 0.8em; margin-left: 10px; }
+
+    .status-opt { color: var(--neon-green); }
+    .status-load { color: var(--ubuntu-orange); }
+    .status-init { color: var(--neon-pink); }
+    
+    @media (max-width: 600px) {
+        .col-addr, .col-status { display: none; }
+        .col-module { width: auto; }
+    }
 
     /* Clients Section */
     .clients-grid {
@@ -409,4 +440,24 @@ export class ResumeRendererComponent {
   private resumeService = inject(ResumeService);
 
   resume = toSignal(this.resumeService.getResume());
+
+  getHexAddress(id: number): string {
+    // Generate a consistent pseudo-random hex address
+    const base = 0x8000;
+    return '0x' + (base + id * 16).toString(16).toUpperCase();
+  }
+
+  getStatus(percentage: number): string {
+    if (percentage >= 90) return 'OPTIMIZED';
+    if (percentage >= 75) return 'RUNNING';
+    if (percentage >= 50) return 'LOADING...';
+    return 'INIT';
+  }
+
+  getStatusColor(percentage: number): string {
+    if (percentage >= 90) return 'status-opt';
+    if (percentage >= 75) return 'status-opt';
+    if (percentage >= 50) return 'status-load';
+    return 'status-init';
+  }
 }
