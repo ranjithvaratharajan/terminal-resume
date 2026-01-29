@@ -43,11 +43,9 @@ import { ResumeService } from '../../services/resume.service';
                   <p class="summary">{{ data.about.summary }}</p>
                 </div>
                 
-                @if (data.about.cv_file_url) {
                   <div class="actions">
-                    <a [href]="data.about.cv_file_url" target="_blank" class="btn">[ DOWNLOAD_CV ]</a>
+                    <a href="assets/ranjith-resume.pdf" download="ranjith-resume.pdf" class="btn">[ DOWNLOAD_CV ]</a>
                   </div>
-                }
               </div>
             </div>
           }
