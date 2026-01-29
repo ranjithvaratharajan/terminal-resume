@@ -26,6 +26,12 @@ export class MatrixTextComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         if (isPlatformBrowser(this.platformId)) {
+            // Mobile check: Disable animation for better performance/UX
+            if (window.innerWidth < 768) {
+                this.displayString = this.text;
+                return;
+            }
+
             // Initial placeholder
             this.displayString = this.text.split('').map(() => this.randomChar()).join('');
 
