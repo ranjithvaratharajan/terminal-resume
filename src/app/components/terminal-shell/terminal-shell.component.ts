@@ -1,5 +1,5 @@
-import { Component, inject, ViewChild, ElementRef, computed, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, ViewChild, ElementRef, computed, AfterViewInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ResumeRendererComponent } from '../resume-renderer/resume-renderer.component';
 import { BootSequenceComponent } from '../boot-sequence/boot-sequence.component';
 import { ScreensaverComponent } from '../screensaver/screensaver.component';
@@ -38,8 +38,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
         <input #cmdInput 
                type="text" 
                class="cmd-input"
-               (keydown.enter)="handleCommand(cmdInput.value); cmdInput.value=''" 
-               autofocus />
+               (keydown.enter)="handleCommand(cmdInput.value); cmdInput.value=''" />
       </div>
       <div class="status-bar">
         <div class="ticker-track">
@@ -253,8 +252,12 @@ export class TerminalShellComponent implements AfterViewInit {
     }
   }
 
+  private platformId = inject(PLATFORM_ID);
+
   focusInput() {
-    this.cmdInput?.nativeElement.focus();
+    if (isPlatformBrowser(this.platformId) && window.innerWidth > 768) {
+      this.cmdInput?.nativeElement.focus();
+    }
   }
 
   handleCommand(cmd: string) {
