@@ -222,8 +222,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
       .terminal-title { text-align: left; margin-left: 0; }
     }
 
-      .terminal-title { text-align: left; margin-left: 0; }
-    }
+
   `]
 })
 export class TerminalShellComponent implements AfterViewInit {
