@@ -54,7 +54,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 100dvh;
       width: 100vw;
       /* Deep Space Gradient */
       background: radial-gradient(circle at center, #2b1121 0%, #000000 100%);
@@ -215,7 +215,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
       .terminal-window {
         border-radius: 0;
         border: none;
-        height: 100vh;
+        height: 100dvh;
+        padding-bottom: env(safe-area-inset-bottom);
       }
       .terminal-controls { display: none; }
       .terminal-title { text-align: left; margin-left: 0; }
