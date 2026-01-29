@@ -115,6 +115,24 @@
             "title": "BACHELOR OF COMPUTER APPLICATIONS",
             "name": "SMS COLLEGE OF ARTS AND SCIENCE",
             "class": "First Class"
+        },
+        {
+            "id": 3,
+            "startYear": "2005",
+            "endYear": "2006",
+            "title": "HIGHER SECONDARY CERTIFICATE",
+            "name": "SN MATRICULATION HIGHER SECONDARY SCHOOL",
+            "class": "First Class",
+            "percentage": "79.25%"
+        },
+        {
+            "id": 4,
+            "startYear": "2003",
+            "endYear": "2004",
+            "title": "SECONDARY SCHOOL LEAVING CERTIFICATE",
+            "name": "SN MATRICULATION HIGHER SECONDARY SCHOOL",
+            "class": "First Class",
+            "percentage": "74.25%"
         }
     ],
     "projects": [],
