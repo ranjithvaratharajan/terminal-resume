@@ -9,7 +9,8 @@
 ## 🌟 Key Features
 
 *   **Cinematic Boot Sequence**: Retro BIOS-style startup with memory tests and hardware checks.
-*   **Interactive Shell**: Type commands like `about`, `skills`, `experience`, or `contact`.
+*   **Interactive Shell**: Type commands like `about`, `skills`, `projects`, `experience`, or `contact`.
+*   **Project Showcase**: A dedicated section for pet projects with direct links to GitHub and live demos.
 *   **Idle Protocol**: A Matrix Digital Rain screensaver activates after 30 seconds of inactivity.
 *   **News Ticker**: Seamless scrolling marquee with live updates.
 *   **Hex-Dump Skills**: Technical competencies displayed as a system memory dump with animated capacity bars.
@@ -41,7 +42,7 @@
 You don't need to touch the code to update your resume!
 
 1.  Open `src/assets/resume.json`.
-2.  Edit your `About`, `Experience`, `Education`, or `Skills` sections.
+2.  Edit your `About`, `Experience`, `Education`, `Skills`, or `Projects` sections.
 3.  Refresh the page—the changes are instant!
 
 ## 🚢 Deployment (CI/CD)
@@ -68,6 +69,7 @@ This project uses **GitHub Actions** for automated deployment to shared hosting 
 | `about` | Display profile summary |
 | `skills` | List technical competencies |
 | `experience` | Show work history |
+| `projects` | Display pet projects and demos |
 | `clients` | Display past clients (ASCII Art) |
 | `education` | Show academic background |
 | `contact` | Display contact channels |

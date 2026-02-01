@@ -174,6 +174,35 @@ import { ResumeService } from '../../services/resume.service';
               </div>
             </div>
           }
+          @case ('projects') {
+            <div class="section projects">
+              <h2 class="section-header">
+                <span class="cmd"><span class="cmd-prefix">$</span> ls -R ./projects</span>
+                <button class="back-btn" (click)="navService.navigate('help')">[ .. ] return</button>
+              </h2>
+              <div class="projects-list">
+                @for (project of data.projects; track project.id) {
+                  <div class="project-entry fade-in" [style.animation-delay]="project.id * 150 + 'ms'">
+                    <div class="project-header">
+                      <span class="project-title">> {{ project.title }}</span>
+                      <div class="project-links">
+                        @if (project.githubUrl) {
+                          <a [href]="project.githubUrl" target="_blank" class="p-link">[ GITHUB ]</a>
+                        }
+                        <a [href]="project.url" target="_blank" class="p-link">[ DEMO ]</a>
+                      </div>
+                    </div>
+                    <p class="project-desc">{{ project.description }}</p>
+                    <div class="tech-stack">
+                      @for (tech of project.technologies; track tech) {
+                        <span class="tech-tag">{{ tech }}</span>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          }
           @case ('contact') {
             <div class="section contact">
               <h2 class="section-header">
@@ -209,6 +238,7 @@ import { ResumeService } from '../../services/resume.service';
                 <li><button (click)="navService.navigate('about')">> about</button> <span class="comment"># Display user profile</span></li>
                 <li><button (click)="navService.navigate('skills')">> skills</button> <span class="comment"># Analyze technical competencies</span></li>
                 <li><button (click)="navService.navigate('experience')">> experience</button> <span class="comment"># Print work history log</span></li>
+                <li><button (click)="navService.navigate('projects')">> projects</button> <span class="comment"># Featured pet projects</span></li>
                 <li><button (click)="navService.navigate('education')">> education</button> <span class="comment"># List academic records</span></li>
                 <li><button (click)="navService.navigate('clients')">> clients</button> <span class="comment"># View client history</span></li>
                 <li><button (click)="navService.navigate('testimonials')">> testimonials</button> <span class="comment"># Read system logs/reviews</span></li>
@@ -413,6 +443,49 @@ import { ResumeService } from '../../services/resume.service';
     .log-user { color: var(--neon-pink); font-weight: bold; }
     .log-role { color: #888; font-size: 0.85em; margin-left: 5px; }
     .log-msg { color: #ccc; margin-top: 5px; font-style: italic; }
+
+    /* Projects Section */
+    .projects-list { display: flex; flex-direction: column; gap: 2em; }
+    .project-entry {
+        border-left: 2px solid var(--neon-blue);
+        padding-left: 1.5em;
+        position: relative;
+    }
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5em;
+    }
+    .project-title {
+        color: var(--neon-pink);
+        font-weight: bold;
+        font-size: 1.2em;
+        text-shadow: 0 0 5px var(--neon-pink);
+    }
+    .project-links { display: flex; gap: 1em; }
+    .p-link {
+        color: var(--neon-green);
+        text-decoration: none;
+        font-size: 0.8em;
+        border: 1px solid transparent;
+        padding: 2px 5px;
+    }
+    .p-link:hover {
+        background-color: var(--neon-green);
+        color: var(--background-color);
+        text-shadow: none;
+    }
+    .project-desc { color: #ccc; margin: 0.5em 0; line-height: 1.5; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .tech-tag {
+        font-size: 0.75em;
+        color: var(--ubuntu-orange);
+        border: 1px solid var(--ubuntu-orange);
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: rgba(223, 76, 30, 0.1);
+    }
 
     /* Contact & Help */
     .ping-stats { font-family: monospace; }

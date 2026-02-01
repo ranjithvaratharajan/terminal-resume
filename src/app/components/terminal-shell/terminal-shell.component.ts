@@ -278,7 +278,7 @@ export class TerminalShellComponent implements AfterViewInit {
       } else if (arg && ['ubuntu', 'matrix', 'amber', 'cyberpunk', 'dracula', 'macos'].includes(arg)) {
         this.themeService.setTheme(arg);
       }
-    } else if (['about', 'skills', 'experience', 'education', 'testimonials', 'clients', 'contact', 'help'].includes(command)) {
+    } else if (['about', 'skills', 'experience', 'projects', 'education', 'testimonials', 'clients', 'contact', 'help'].includes(command)) {
       this.navService.navigate(command as any);
     }
 

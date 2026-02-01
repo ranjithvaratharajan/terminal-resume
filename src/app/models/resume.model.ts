@@ -4,6 +4,15 @@ export interface Client {
     logoAscii: string;
 }
 
+export interface Project {
+    id: number;
+    title: string;
+    description: string;
+    technologies: string[];
+    url: string;
+    githubUrl?: string;
+}
+
 export interface Resume {
     about: About;
     skills: Skill[];
@@ -11,6 +20,7 @@ export interface Resume {
     education: Education[];
     testimonials: Testimonial[];
     clients: Client[];
+    projects: Project[];
     newsItems: string[];
     contact: Contact;
 }

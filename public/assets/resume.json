@@ -135,7 +135,34 @@
             "percentage": "74.25%"
         }
     ],
-    "projects": [],
+    "projects": [
+        {
+            "id": 1,
+            "title": "Terminal Resume",
+            "description": "A cyberpunk-inspired, interactive command-line interface (CLI) resume. Features a cinematic boot sequence, idle protocol (Matrix screensaver), and a theme engine.",
+            "technologies": [
+                "Angular 19",
+                "Terminal.css",
+                "Signals",
+                "RxJS"
+            ],
+            "url": "https://varanjith.com",
+            "githubUrl": "https://github.com/ranjithvaratharajan/terminal-resume"
+        },
+        {
+            "id": 2,
+            "title": "Retro Scientific Orrery",
+            "description": "A mathematically accurate solar system simulator. Calculates planetary positions using Keplerian Orbital Elements and Julian Dates. Features multiple scaling modes and interactive navigation.",
+            "technologies": [
+                "Angular 21",
+                "Three.js",
+                "WebGL",
+                "TypeScript"
+            ],
+            "url": "https://solar.varanjith.com",
+            "githubUrl": "https://github.com/ranjithvaratharajan/retro-orrery"
+        }
+    ],
     "testimonials": [
         {
             "id": 1,
