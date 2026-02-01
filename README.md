@@ -2,7 +2,7 @@
 
 > A cyberpunk-inspired, interactive command-line interface (CLI) resume, built with Angular and Terminal.css.
 
-![Angular](https://img.shields.io/badge/Angular-v19-dd0031.svg)
+![Angular](https://img.shields.io/badge/Angular-v21-dd0031.svg)
 ![Theme](https://img.shields.io/badge/Theme-Cyberpunk-00ff00.svg)
 ![Status](https://img.shields.io/badge/Status-Online-brightgreen.svg)
 

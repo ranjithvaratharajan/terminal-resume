@@ -1,9 +1,9 @@
 {
     "about": {
         "name": "Ranjith Varatharajan",
-        "title": "Application Development Specialist",
-        "tagline": "Design is passion | Code is poetry",
-        "summary": "Hello there, I am an Application Development Specialist, working for Accenture India and lives in Coimbatore.",
+        "title": "Application Development Specialist / Agentic AI Developer",
+        "tagline": "Architecting Intelligent Autonomous Systems",
+        "summary": "Forward-thinking Developer specializing in Agentic AI and Large Language Models. Experienced in designing and deploying systems where code meets cognition, creating autonomous agents that solve complex problems. Innovative, detail-oriented, and ready to redefine the boundaries of software engineering.",
         "profile_image_url": "https://api.varanjith.com/uploads/6857361711423.jpg",
         "cv_file_url": "https://varanjith.com/api/uploads/6857d7842c7e7.pdf"
     },
@@ -14,7 +14,7 @@
             "endDate": "Present",
             "title": "Application Development Specialist",
             "company": "Accenture India",
-            "description": "I am full-stack developer working with ASP.NET Web Forms, MVC, Angular, C# and SQL Server. I am currently a front-end software engineer of a small but dedicated team in our Engineering Solutions Team. This team is responsible for troubleshooting client issues and providing fixes in a quick turn around. We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+            "description": "Leading the frontend modernization initiative for WPD/CMA MUT applications, rewriting legacy UI screens into a responsive Angular architecture. Mentoring junior developers (ASEs) in Angular best practices and ensuring high-quality, timely delivery. Collaborating directly with client support teams to troubleshoot complex production issues and deploy rapid fixes, significantly reducing downtime."
         },
         {
             "id": 2,
@@ -22,7 +22,7 @@
             "endDate": "Feb 2022",
             "title": "Technical Lead",
             "company": "L&T Technology Services",
-            "description": "I am full-stack developer working with ASP.NET Web Forms, MVC, Angular, C# and SQL Server. I am currently a front-end software engineer of a small but dedicated team in our Engineering Solutions Team. This team is responsible for troubleshooting client issues and providing fixes in a quick turn around. We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+            "description": "Spearheaded the development of engineering solutions using ASP.NET Web Forms, MVC, and Angular. Acted as a key technical liaison for the Engineering Solutions Team, resolving critical client escalations and ensuring prompt delivery of patches. Architected robust frontend components and optimized SQL Server queries to improve application performance."
         },
         {
             "id": 3,
@@ -30,7 +30,7 @@
             "endDate": "Apr 2021",
             "title": "Senior Software Engineer",
             "company": "L&T Technology Services",
-            "description": "We work directly with our Client Support and Services department to ensure prompt delivery of fixes as well as to keep up to date on client escalations."
+            "description": "Played a pivotal role in the full-stack development lifecycle, delivering high-impact features for global clients. Worked closely with the Client Support department to analyze root causes of recurring issues and implemented systemic fixes, enhancing system stability and user satisfaction."
         },
         {
             "id": 4,
@@ -38,7 +38,7 @@
             "endDate": "Sep 2018",
             "title": "Software Engineer",
             "company": "Saggezza India Pvt. Ltd.",
-            "description": "Made changes and fixes to an existing ecommerce application. Started on large scale web/data mining project. Maintained a high level of quality. Worked on large projects while maintaining deadline and high quality. Used SSIS/SSRS to create reports for the application."
+            "description": "Optimized and maintained a high-traffic e-commerce application, implementing critical bug fixes and feature enhancements. Initiated a large-scale data mining project to extract actionable insights from legacy data. Leveraged SSIS/SSRS to generate comprehensive reports, driving data-driven decision-making for stakeholders."
         },
         {
             "id": 5,
@@ -46,7 +46,7 @@
             "endDate": "Oct 2017",
             "title": "Software Engineer",
             "company": "Cogwave Software Technologies",
-            "description": "Created frontend web applications to reduce redundant or inefficient procedures and processes. Maintained a high level of quality. Worked on large projects while maintaining deadline and high quality. Worked on back-end hotel/room reservation processes for normal workflows. Worked directly with clients to document and program custom hotel/room policies. Traveled to client sites to train clients on using solutions. Worked directly with clients to analyze and troubleshoot payment issues in a client support role."
+            "description": "Drove the digital transformation of manual hotel administration processes into efficient web applications. Built custom hotel/room reservation workflows and policy engines. Interfaced directly with clients to gather requirements, document custom policies, and provide on-site training and support, ensuring successful product adoption."
         },
         {
             "id": 6,
@@ -54,12 +54,22 @@
             "endDate": "Oct 2016",
             "title": "Software Developer",
             "company": "Sivasakthi Software Services",
-            "description": "Maintained a high level of quality. Worked on large projects while maintaining deadlines and high quality."
+            "description": "Contributed to the development of core software modules, consistently meeting tight deadlines without compromising quality. Collaborated with cross-functional teams to deliver large-scale projects, focusing on code maintainability and adherence to software design standards."
         }
     ],
     "skills": [
         {
             "id": 1,
+            "title": "AGENTIC AI",
+            "percentage": 90
+        },
+        {
+            "id": 99,
+            "title": "PROMPT ENGINEERING",
+            "percentage": 90
+        },
+        {
+            "id": 100,
             "title": "ANGULAR",
             "percentage": 90
         },
@@ -312,10 +322,10 @@
         ]
     },
     "newsItems": [
-        "LATEST: Ranjith deploys new Angular Resume v2.0",
-        "UPDATE: Mastering RxJS and Signals for high performance",
-        "STATUS: Available for new opportunities worldwide",
-        "ALERT: System operating at 100% capacity",
+        "LATEST: Deployed multi-agent orchestration layer",
+        "UPDATE: Optimizing chain-of-thought reasoning pipelines",
+        "STATUS: Fine-tuning models for specific domains",
+        "ALERT: Neural networks firing at 100% capacity",
         "WEATHER: 25°C in the digital realm"
     ]
 }
