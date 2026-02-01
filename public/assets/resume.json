@@ -3,7 +3,7 @@
         "name": "Ranjith Varatharajan",
         "title": "Application Development Specialist / Agentic AI Developer",
         "tagline": "Architecting Intelligent Autonomous Systems",
-        "summary": "Forward-thinking Developer specializing in Agentic AI and Large Language Models. Experienced in designing and deploying systems where code meets cognition, creating autonomous agents that solve complex problems. Innovative, detail-oriented, and ready to redefine the boundaries of software engineering.",
+        "summary": "Seasoned Agentic AI Developer & Front-End Specialist with a 11-year track record. Specializing in crafting intelligent, autonomous web applications using Angular (v2-21) and LLM orchestration. Experienced in applying SOLID principles and TDD to ensure robust, maintainable code. Committed to professional growth through the seamless integration of Agentic AI technologies into diverse work environments.",
         "profile_image_url": "https://api.varanjith.com/uploads/6857361711423.jpg",
         "cv_file_url": "https://varanjith.com/api/uploads/6857d7842c7e7.pdf"
     },
@@ -171,6 +171,31 @@
             ],
             "url": "https://solar.varanjith.com",
             "githubUrl": "https://github.com/ranjithvaratharajan/retro-orrery"
+        },
+        {
+            "id": 3,
+            "title": "Risk Finance Management (NatWest)",
+            "description": "A secure user gateway for administrators to manage access permissions effectively. Features intuitive dashboards for modifying user access rights and viewing user information, enhancing operational security and efficiency.",
+            "technologies": [
+                "Angular",
+                "NodeJS",
+                "WEB"
+            ],
+            "url": "",
+            "githubUrl": ""
+        },
+        {
+            "id": 4,
+            "title": "Elevance Healthcare Management",
+            "description": "A SaaS solution for healthcare clients featuring a mass update module for contract records. Streamlines operational workflows for users and clients by enabling efficient bulk data management.",
+            "technologies": [
+                "Angular",
+                "Karma",
+                "Jasmine",
+                "WEB"
+            ],
+            "url": "",
+            "githubUrl": ""
         }
     ],
     "testimonials": [

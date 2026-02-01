@@ -189,7 +189,9 @@ import { ResumeService } from '../../services/resume.service';
                         @if (project.githubUrl) {
                           <a [href]="project.githubUrl" target="_blank" class="p-link">[ GITHUB ]</a>
                         }
+                        @if (project.url) {
                         <a [href]="project.url" target="_blank" class="p-link">[ DEMO ]</a>
+                        }
                       </div>
                     </div>
                     <p class="project-desc">{{ project.description }}</p>
