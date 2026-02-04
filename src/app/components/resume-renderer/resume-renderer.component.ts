@@ -123,8 +123,8 @@ import { ResumeService } from '../../services/resume.service';
                     <span class="col-status">STATUS</span>
                     <span class="col-capacity">CAPACITY</span>
                   </div>
-                  @for (skill of data.skills; track skill.id) {
-                    <div class="hex-row fade-in" [style.animation-delay]="skill.id * 50 + 'ms'">
+                  @for (skill of data.skills; track skill.id; let i = $index) {
+                    <div class="hex-row fade-in" [style.animation-delay]="i * 50 + 'ms'">
                       <span class="col-addr">{{ getHexAddress(skill.id) }}</span>
                       <span class="col-module">{{ skill.title }}</span>
                       <span class="col-status" [ngClass]="getStatusColor(skill.percentage)">{{ getStatus(skill.percentage) }}</span>
@@ -472,6 +472,7 @@ import { ResumeService } from '../../services/resume.service';
         font-size: 0.8em;
         border: 1px solid transparent;
         padding: 2px 5px;
+        white-space: nowrap;
     }
     .p-link:hover {
         background-color: var(--neon-green);
@@ -511,6 +512,8 @@ import { ResumeService } from '../../services/resume.service';
     @media (max-width: 600px) {
        .profile-header { flex-direction: column; text-align: center; }
        .skills-grid { grid-template-columns: 1fr; }
+       .project-header { flex-direction: column; align-items: flex-start; gap: 0.5em; }
+       .project-links { width: 100%; justify-content: flex-start; }
     }
   `]
 })
