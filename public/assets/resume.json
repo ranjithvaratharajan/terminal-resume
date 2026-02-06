@@ -196,6 +196,19 @@
             ],
             "url": "",
             "githubUrl": ""
+        },
+        {
+            "id": 5,
+            "title": "FlowMinds",
+            "description": "AI-Powered System Architecture & Logic Flow Visualizer. Transforms natural language into complex execution flows and diagrams using Mermaid.js, wrapped in a Cyberpunk interface.",
+            "technologies": [
+                "Angular 20",
+                "TailwindCSS v4",
+                "Mermaid.js",
+                "Generative AI"
+            ],
+            "url": "https://flowminds.varanjith.com/",
+            "githubUrl": "https://github.com/ranjithvaratharajan/flow-minds/"
         }
     ],
     "testimonials": [
