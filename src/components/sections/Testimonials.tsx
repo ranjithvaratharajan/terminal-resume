@@ -26,11 +26,11 @@ export default function Testimonials() {
           {resumeData.testimonials.map((testimonial) => (
             <TiltCard
               key={testimonial.id}
-              className="testimonial-card group"
+              className="testimonial-card group h-full"
               rotationIntensity={6}
             >
               <blockquote
-                className="border border-gray-100 rounded-sm p-8 hover:border-gray-200 transition-colors duration-300 relative bg-white h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                className="border border-gray-100 rounded-sm p-8 hover:border-gray-200 transition-colors duration-300 relative bg-white h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col"
               >
               {/* Quotation mark */}
               <span
@@ -40,11 +40,11 @@ export default function Testimonials() {
                 &ldquo;
               </span>
 
-              <p className="text-gray-600 leading-relaxed text-sm mb-6 relative z-10">
+              <p className="text-gray-600 leading-relaxed text-sm mb-6 relative z-10 flex-1">
                 {testimonial.quote}
               </p>
 
-              <footer className="relative z-10">
+              <footer className="relative z-10 mt-auto">
                 <cite className="not-italic">
                   <p className="text-sm font-semibold text-gray-900">
                     {testimonial.name}
