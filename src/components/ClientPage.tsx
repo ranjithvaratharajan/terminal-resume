@@ -4,7 +4,6 @@
 import { resumeData } from "@/lib/resume-data";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import ScrollProgress from "@/components/layout/ScrollProgress";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import Summary from "@/components/sections/Summary";
@@ -20,7 +19,6 @@ export default function ClientPage() {
 
   return (
     <SmoothScroll>
-      <ScrollProgress />
       <Header />
 
       <main>

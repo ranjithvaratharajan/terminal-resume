@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { resumeData } from "@/lib/resume-data";
 import CustomCursor from "@/components/ui/CustomCursor";
+import FloatingScrollButton from "@/components/ui/FloatingScrollButton";
 import "./globals.css";
 
 const inter = Inter({
@@ -125,6 +126,7 @@ export default function RootLayout({
       </head>
       <body className="font-[family-name:var(--font-inter)] antialiased">
         <CustomCursor />
+        <FloatingScrollButton />
         {children}
       </body>
     </html>
