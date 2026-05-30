@@ -3,6 +3,7 @@
 import { resumeData } from "@/lib/resume-data";
 import { useScrollReveal } from "@/lib/animations";
 import SectionHeader from "@/components/ui/SectionHeader";
+import TiltCard from "@/components/ui/TiltCard";
 
 export default function Testimonials() {
   const ref = useScrollReveal<HTMLDivElement>({
@@ -23,10 +24,14 @@ export default function Testimonials() {
 
         <div ref={ref} className="grid md:grid-cols-2 gap-8">
           {resumeData.testimonials.map((testimonial) => (
-            <blockquote
+            <TiltCard
               key={testimonial.id}
-              className="testimonial-card border border-gray-100 rounded-sm p-8 hover:border-gray-200 transition-colors duration-300 relative"
+              className="testimonial-card group"
+              rotationIntensity={6}
             >
+              <blockquote
+                className="border border-gray-100 rounded-sm p-8 hover:border-gray-200 transition-colors duration-300 relative bg-white h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+              >
               {/* Quotation mark */}
               <span
                 className="absolute top-4 right-6 text-6xl text-gray-100 font-serif leading-none select-none pointer-events-none"
@@ -50,6 +55,7 @@ export default function Testimonials() {
                 </cite>
               </footer>
             </blockquote>
+            </TiltCard>
           ))}
         </div>
       </div>

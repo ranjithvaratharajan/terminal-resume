@@ -3,6 +3,7 @@
 import { resumeData } from "@/lib/resume-data";
 import { useScrollReveal } from "@/lib/animations";
 import SectionHeader from "@/components/ui/SectionHeader";
+import TiltCard from "@/components/ui/TiltCard";
 
 export default function Projects() {
   const gridRef = useScrollReveal<HTMLDivElement>({
@@ -19,11 +20,12 @@ export default function Projects() {
 
         <div ref={gridRef} className="space-y-12">
           {resumeData.projects.map((project) => (
-            <article
+            <TiltCard
               key={project.id}
               className="project-card group"
+              rotationIntensity={8}
             >
-              <div className="border border-gray-100 rounded-sm p-8 hover:border-gray-300 transition-all duration-300 hover:shadow-sm">
+              <div className="border border-gray-100 rounded-sm p-8 hover:border-gray-300 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white h-full">
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div>
@@ -123,7 +125,7 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-            </article>
+            </TiltCard>
           ))}
         </div>
       </div>
