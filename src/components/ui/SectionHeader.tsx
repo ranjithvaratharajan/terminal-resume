@@ -1,7 +1,6 @@
 "use client";
 
 import { useScrollReveal } from "@/lib/animations";
-import ScrambleText from "@/components/ui/ScrambleText";
 
 interface SectionHeaderProps {
   title: string;
@@ -18,8 +17,8 @@ export default function SectionHeader({ title, number }: SectionHeaderProps) {
           {number}
         </span>
       )}
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight cursor-default">
-        <ScrambleText text={title} scrambleOnMount={true} />
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
+        {title}
       </h2>
       <div className="flex-1 h-px bg-gray-200 ml-4" aria-hidden="true" />
     </div>

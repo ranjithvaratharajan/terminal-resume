@@ -5,7 +5,6 @@ import { resumeData } from "@/lib/resume-data";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { motion } from "framer-motion";
-import ScrambleText from "@/components/ui/ScrambleText";
 import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
 
 export default function Hero() {
@@ -51,14 +50,14 @@ export default function Hero() {
           {personal.title}
         </p>
 
-        <motion.div
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="text-sm md:text-base text-gray-400 font-mono tracking-widest uppercase mb-12 cursor-default"
+          className="text-sm md:text-base text-gray-400 font-mono tracking-widest uppercase mb-12"
         >
-          <ScrambleText text={personal.tagline} />
-        </motion.div>
+          {personal.tagline}
+        </motion.p>
 
         {/* Key Metrics */}
         <motion.div
