@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { resumeData } from "@/lib/resume-data";
+import MagneticText from "@/components/ui/MagneticText";
+import DarkModeToggle from "@/components/ui/DarkModeToggle";
 
 const navItems = [
   { label: "Summary", href: "#summary" },
@@ -90,15 +92,17 @@ export default function Header() {
             const isActive = activeSection === item.href;
             return (
               <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-sm font-medium transition-colors duration-200 hover:text-gray-900 animated-link ${
-                    isActive ? "text-blue-600 after:w-full" : "text-gray-500"
-                  }`}
-                >
-                  {item.label}
-                </a>
+                <MagneticText>
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-gray-900 animated-link ${
+                      isActive ? "text-blue-600 after:w-full" : "text-gray-500"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </MagneticText>
               </li>
             );
           })}
@@ -112,11 +116,16 @@ export default function Header() {
               Resume
             </a>
           </li>
+          <li>
+            <DarkModeToggle />
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+        <div className="md:hidden flex items-center gap-4">
+          <DarkModeToggle />
+          <button
+            className="relative w-8 h-8 flex flex-col items-center justify-center gap-1.5"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -132,6 +141,7 @@ export default function Header() {
             }`}
           />
         </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}

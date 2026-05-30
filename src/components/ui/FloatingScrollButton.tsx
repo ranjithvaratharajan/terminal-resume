@@ -5,11 +5,6 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 export default function FloatingScrollButton() {
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 

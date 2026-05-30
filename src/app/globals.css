@@ -152,3 +152,65 @@ p {
     padding: 1rem 0;
   }
 }
+
+/* ─── Dark Mode & View Transitions ─── */
+
+.dark-theme {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: #050506; /* inverted #FAFAF9 */
+}
+
+/* Reverse the invert for elements that shouldn't be inverted (like specific SVGs/colors if needed) */
+.dark-theme img:not(.invert-in-dark), 
+.dark-theme video,
+.dark-theme canvas,
+.dark-theme .no-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Default: New view animates IN over old view */
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Going to Dark: New view (Dark) grows over old view (Light) */
+.dark-transition::view-transition-new(root) {
+  animation: 0.7s cubic-bezier(0.25, 1, 0.3, 1) circle-in both;
+}
+
+/* Going to Light: Old view (Dark) shrinks away, revealing new view (Light) beneath */
+.light-transition::view-transition-old(root) {
+  z-index: 9999;
+  animation: 0.7s cubic-bezier(0.25, 1, 0.3, 1) circle-out both reverse;
+}
+.light-transition::view-transition-new(root) {
+  z-index: 1;
+  animation: none;
+}
+
+@keyframes circle-in {
+  from {
+    clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+  to {
+    clip-path: circle(150% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+}
+
+@keyframes circle-out {
+  from {
+    clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+  to {
+    clip-path: circle(150% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+}

@@ -29,7 +29,7 @@ const ClientLogo = ({ name }: { name: string }) => {
         src={svgPath}
         alt={`${name} logo`}
         title={name}
-        className="h-7 md:h-9 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+        className="invert-in-dark h-7 md:h-9 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
       />
     );
   }
@@ -82,7 +82,7 @@ export default function Summary() {
               {resumeData.clients.map((client) => (
                 <div
                   key={client}
-                  className="text-gray-300 hover:text-gray-800 transition-colors duration-300"
+                  className="text-gray-400 hover:text-gray-900 transition-colors duration-300"
                 >
                   <ClientLogo name={client} />
                 </div>
