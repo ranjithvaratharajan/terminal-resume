@@ -3,6 +3,7 @@
 import { resumeData } from "@/lib/resume-data";
 import { useLineReveal } from "@/lib/animations";
 import SectionHeader from "@/components/ui/SectionHeader";
+import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 import { SiAccenture, SiGeneralelectric } from "react-icons/si";
 import { FaBuildingColumns } from "react-icons/fa6";
 
@@ -78,15 +79,17 @@ export default function Summary() {
             <p className="text-xs font-mono text-gray-400 tracking-widest uppercase mb-6">
               Trusted by teams at
             </p>
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
-              {resumeData.clients.map((client) => (
-                <div
-                  key={client}
-                  className="text-gray-400 hover:text-gray-900 transition-colors duration-300"
-                >
-                  <ClientLogo name={client} />
-                </div>
-              ))}
+            <div className="-mx-6">
+              <InfiniteMarquee speed={30}>
+                {resumeData.clients.map((client) => (
+                  <div
+                    key={client}
+                    className="text-gray-400 hover:text-gray-900 transition-colors duration-300 flex items-center justify-center"
+                  >
+                    <ClientLogo name={client} />
+                  </div>
+                ))}
+              </InfiniteMarquee>
             </div>
           </div>
         </div>

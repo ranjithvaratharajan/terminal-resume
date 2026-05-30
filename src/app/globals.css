@@ -153,6 +153,16 @@ p {
   }
 }
 
+/* ─── Custom Animations ─── */
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 2rem)); /* Adjust based on gap */
+  }
+}
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) linear infinite;
+}
+
 /* ─── Dark Mode & View Transitions ─── */
 
 .dark-theme {

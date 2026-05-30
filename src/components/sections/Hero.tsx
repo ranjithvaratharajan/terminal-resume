@@ -7,6 +7,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
 import CreativeArt from "@/components/ui/CreativeArt";
+import LiveStatusWidget from "@/components/ui/LiveStatusWidget";
 
 export default function Hero() {
   const nameRef = useCharacterReveal<HTMLHeadingElement>({
@@ -142,6 +143,11 @@ export default function Hero() {
           <motion.div className="w-1 h-2 bg-gray-400 rounded-full" />
         </motion.div>
       </motion.div>
+
+      {/* Live Status Widget */}
+      <div className="absolute bottom-8 left-6 hidden md:block z-20">
+        <LiveStatusWidget />
+      </div>
     </section>
   );
 }
