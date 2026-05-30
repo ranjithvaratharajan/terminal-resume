@@ -6,6 +6,7 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
+import CreativeArt from "@/components/ui/CreativeArt";
 
 export default function Hero() {
   const nameRef = useCharacterReveal<HTMLHeadingElement>({
@@ -33,7 +34,8 @@ export default function Hero() {
       className="relative min-h-[100dvh] flex flex-col justify-center items-center px-6 py-24"
       aria-label="Introduction"
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <CreativeArt />
+      <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Name */}
         <h1
           ref={nameRef}
