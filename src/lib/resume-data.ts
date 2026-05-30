@@ -83,6 +83,11 @@ export interface ResumeData {
   clients: string[];
 }
 
+const careerStartDate = new Date("2014-12-01");
+const dynamicYearsExperience = Math.floor(
+  (new Date().getTime() - careerStartDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25)
+);
+
 export const resumeData: ResumeData = {
   personal: {
     name: "Ranjith Varatharajan",
@@ -91,8 +96,8 @@ export const resumeData: ResumeData = {
     title: "Application Development Specialist & Agentic AI Developer",
     tagline: "Architecting Intelligent Autonomous Systems",
     summary:
-      "Seasoned Application Development Specialist & Agentic AI Developer with an 11-year track record of delivering high-impact software solutions across Fortune 500 enterprises. Specializing in crafting intelligent, autonomous web applications using Angular (v2–21) and LLM orchestration. Experienced in applying SOLID principles and TDD to ensure robust, maintainable code. Proven ability to lead frontend modernization initiatives, mentor engineering teams, and collaborate directly with global clients to drive digital transformation.",
-    yearsExperience: 11,
+      `Seasoned Application Development Specialist & Agentic AI Developer with an ${dynamicYearsExperience}-year track record of delivering high-impact software solutions across Fortune 500 enterprises. Specializing in crafting intelligent, autonomous web applications using Angular (v2–21) and LLM orchestration. Experienced in applying SOLID principles and TDD to ensure robust, maintainable code. Proven ability to lead frontend modernization initiatives, mentor engineering teams, and collaborate directly with global clients to drive digital transformation.`,
+    yearsExperience: dynamicYearsExperience,
     totalCompanies: 6,
     totalClients: 9,
     totalProjects: 5,
