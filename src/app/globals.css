@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────
+   Design System — Premium Interactive Resume
+   ───────────────────────────────────────────────────── */
+
+/* Custom theme tokens */
+@theme {
+  --color-surface: #FAFAF9;
+  --color-surface-alt: #F5F5F4;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ─── Base ─── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* ─── Typography ─── */
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ─── Animated Link Underline ─── */
+
+.animated-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.animated-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animated-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Smooth Scrollbar ─── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+/* ─── Focus Styles ─── */
+
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* ─── Reduced Motion ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Print Styles ─── */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  header,
+  footer,
+  .scroll-progress {
+    display: none !important;
+  }
+  
+  section {
+    page-break-inside: avoid;
+    padding: 1rem 0;
+  }
+}

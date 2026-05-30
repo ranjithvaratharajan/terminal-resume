@@ -1,80 +1,90 @@
-# 📟 Terminal Resume
+# Ranjith Varatharajan — Interactive Resume
 
-> A cyberpunk-inspired, interactive command-line interface (CLI) resume, built with Angular and Terminal.css.
+> A premium, typography-first interactive resume built with Next.js, TypeScript, Tailwind CSS, GSAP, and Framer Motion.
 
-![Angular](https://img.shields.io/badge/Angular-v21-dd0031.svg)
-![Theme](https://img.shields.io/badge/Theme-Cyberpunk-00ff00.svg)
-![Status](https://img.shields.io/badge/Status-Online-brightgreen.svg)
+![Next.js](https://img.shields.io/badge/Next.js-16-black.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8.svg)
 
-## 🌟 Key Features
+## ✨ Features
 
-*   **Cinematic Boot Sequence**: Retro BIOS-style startup with memory tests and hardware checks.
-*   **Interactive Shell**: Type commands like `about`, `skills`, `projects`, `experience`, or `contact`.
-*   **Project Showcase**: A dedicated section for pet projects with direct links to GitHub and live demos.
-*   **Idle Protocol**: A Matrix Digital Rain screensaver activates after 30 seconds of inactivity.
-*   **News Ticker**: Seamless scrolling marquee with live updates.
-*   **Hex-Dump Skills**: Technical competencies displayed as a system memory dump with animated capacity bars.
-*   **Matrix Text Decryption**: "Hacker"-style text scrambling effect on page load (optimized for desktop).
-*   **Theme Engine**: Switch between `ubuntu`, `matrix`, `cyberpunk`, `dracula`, and more.
-*   **External Data**: All resume content is decoupled in `assets/resume.json` for easy updates.
+- **Typography-First Design** — Clean, editorial layout optimized for readability
+- **Smooth Animations** — GSAP ScrollTrigger reveals, character staggers, Framer Motion transitions
+- **ATS Optimized** — Semantic HTML, JSON-LD schema, proper heading hierarchy, machine-readable content
+- **Fully Responsive** — Mobile-first design with fluid typography
+- **Accessible** — Focus management, reduced motion support, screen reader friendly
+- **Fast** — Static export, optimized fonts, minimal JavaScript
+- **SEO Ready** — Open Graph, Twitter Cards, structured data, canonical URLs
 
 ## 🚀 Quick Start
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/your-username/terminal-resume.git
-    cd terminal-resume
-    ```
-
-2.  **Install dependencies**
+1. **Install dependencies**
     ```bash
     npm install
     ```
 
-3.  **Run locally**
+2. **Run locally**
     ```bash
-    npm start
+    npm run dev
     ```
-    Navigate to `http://localhost:4200/`.
+    Navigate to `http://localhost:3000/`
+
+3. **Build for production**
+    ```bash
+    npm run build
+    ```
+    Static output will be in the `out/` directory.
 
 ## 📝 Customization
 
-You don't need to touch the code to update your resume!
+All resume data lives in `src/lib/resume-data.ts`. Edit this single file to update:
+- Personal information
+- Work experience
+- Projects
+- Skills
+- Education
+- Testimonials
 
-1.  Open `src/assets/resume.json`.
-2.  Edit your `About`, `Experience`, `Education`, `Skills`, or `Projects` sections.
-3.  Refresh the page—the changes are instant!
+## 🏗️ Architecture
 
-## 🚢 Deployment (CI/CD)
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx          # Root layout (fonts, metadata, JSON-LD)
+│   ├── page.tsx            # Main page (server component)
+│   └── globals.css         # Design system
+├── components/
+│   ├── layout/             # Header, Footer, ScrollProgress, SmoothScroll
+│   ├── sections/           # Hero, Summary, Experience, Projects, Skills, etc.
+│   └── ui/                 # MagneticButton, SectionHeader, AnimatedCounter
+└── lib/
+    ├── resume-data.ts      # All resume content (typed)
+    └── animations.ts       # GSAP animation hooks
+```
 
-This project uses **GitHub Actions** for automated deployment to shared hosting (e.g., Spaceship.com, Namecheap, Bluehost) via FTP.
+## 🚢 Deployment
 
-### How it works
-1.  Push changes to the `master` branch.
-2.  GitHub Action triggers automatically.
-3.  Builds the Angular project in `production` mode.
-4.  **Wipes** the remote server folder (Clean Deploy).
-5.  Uploads the new `dist/` artifacts.
+Uses **GitHub Actions** for automated deployment via FTP:
+
+1. Push to `master` branch
+2. GitHub Action builds the Next.js project
+3. Uploads static `out/` directory to hosting
 
 ### Setup
-1.  Get your FTP credentials (Host, Username, Password).
-2.  Go to **GitHub Repo** -> **Settings** -> **Secrets and variables** -> **Actions**.
-3.  Add secrets: `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`.
+1. Get your FTP credentials
+2. Add GitHub secrets: `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`
 
-## ⌨️ Available Commands
+## 🛠️ Tech Stack
 
-| Command | Description |
-| :--- | :--- |
-| `help` | Show available commands |
-| `about` | Display profile summary |
-| `skills` | List technical competencies |
-| `experience` | Show work history |
-| `projects` | Display pet projects and demos |
-| `clients` | Display past clients (ASCII Art) |
-| `education` | Show academic background |
-| `contact` | Display contact channels |
-| `theme <name>` | Switch theme (e.g., `theme matrix`) |
-| `clear` | Clear terminal screen |
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Animation | GSAP + ScrollTrigger |
+| Animation | Framer Motion |
+| Smooth Scroll | Lenis |
+| Fonts | Inter + JetBrains Mono |
 
 ---
-*Generated by Antigravity*
+*Designed and built as a premium digital resume.*

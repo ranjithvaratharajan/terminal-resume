@@ -23,8 +23,7 @@ jobs:
       run: npm ci
 
     - name: 🏗️ Build Project
-      # "production" configuration ensures optimization
-      run: npm run build -- --configuration production
+      run: npm run build
 
     - name: 📂 Sync with Server (FTP)
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -32,8 +31,8 @@ jobs:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        # The local folder containing the build artifacts
-        local-dir: ./dist/terminal-resume/browser/
+        # Next.js static export outputs to ./out/
+        local-dir: ./out/
         # The remote folder on Spaceship (usually public_html or subfolder)
         server-dir: ./
         protocol: ftps
