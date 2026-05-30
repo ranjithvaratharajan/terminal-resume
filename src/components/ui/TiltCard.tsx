@@ -20,6 +20,14 @@ export default function TiltCard({ children, className = "", rotationIntensity =
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [rotationIntensity, -rotationIntensity]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-rotationIntensity, rotationIntensity]);
+
+  // Physical light source drop shadow
+  const shadowX = useTransform(mouseXSpring, [-0.5, 0.5], [40, -40]);
+  const shadowY = useTransform(mouseYSpring, [-0.5, 0.5], [40, -40]);
+  const boxShadow = useTransform(
+    [shadowX, shadowY],
+    ([sx, sy]) => `${sx}px ${sy}px 60px -15px rgba(0,0,0,0.1)`
+  );
   
   const [isHovered, setIsHovered] = useState(false);
 
@@ -60,6 +68,7 @@ export default function TiltCard({ children, className = "", rotationIntensity =
       style={{
         rotateX,
         rotateY,
+        boxShadow,
         transformStyle: "preserve-3d",
       }}
       animate={{

@@ -122,11 +122,11 @@ export function useCharacterReveal<T extends HTMLElement>(
         .map((char) =>
           char === " "
             ? '<span class="inline-block">&nbsp;</span>'
-            : `<span class="inline-block" style="opacity:0;transform:translateY(30px)">${char}</span>`
+            : `<span class="inline-block dodge-char" style="opacity:0;transform:translateY(30px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block;">${char}</span>`
         )
         .join("");
 
-      const chars = el.querySelectorAll("span");
+      const chars = el.querySelectorAll(".dodge-char");
 
       const tween = gsap.to(chars, {
         opacity: 1,
@@ -135,13 +135,51 @@ export function useCharacterReveal<T extends HTMLElement>(
         stagger,
         delay,
         ease: "power3.out",
+        onComplete: () => {
+          // Add dodge effect after reveal completes
+          const handleMouseMove = (e: MouseEvent) => {
+            chars.forEach((char) => {
+              const rect = char.getBoundingClientRect();
+              const charX = rect.left + rect.width / 2;
+              const charY = rect.top + rect.height / 2;
+              const distX = e.clientX - charX;
+              const distY = e.clientY - charY;
+              const dist = Math.sqrt(distX * distX + distY * distY);
+              
+              if (dist < 100) {
+                // Calculate push away vector
+                const pushX = (distX / dist) * -20;
+                const pushY = (distY / dist) * -20;
+                (char as HTMLElement).style.transform = `translate(${pushX}px, ${pushY}px) scale(1.1)`;
+                (char as HTMLElement).style.color = "#2563EB"; // blue-600
+              } else {
+                (char as HTMLElement).style.transform = `translate(0px, 0px) scale(1)`;
+                (char as HTMLElement).style.color = "";
+              }
+            });
+          };
+
+          const handleMouseLeave = () => {
+            chars.forEach((char) => {
+              (char as HTMLElement).style.transform = `translate(0px, 0px) scale(1)`;
+              (char as HTMLElement).style.color = "";
+            });
+          };
+
+          el.addEventListener("mousemove", handleMouseMove);
+          el.addEventListener("mouseleave", handleMouseLeave);
+          
+          cleanup = () => {
+            el.removeEventListener("mousemove", handleMouseMove);
+            el.removeEventListener("mouseleave", handleMouseLeave);
+          };
+        }
       });
 
-      cleanup = () => tween.kill();
+      if (!cleanup) cleanup = () => tween.kill();
     });
 
     return () => cleanup?.();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options.duration, options.stagger, options.delay]);
 
   return ref;
