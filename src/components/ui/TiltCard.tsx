@@ -76,7 +76,7 @@ export default function TiltCard({ children, className = "", rotationIntensity =
       }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <div style={{ transform: "translateZ(30px)" }}>
+      <div className="h-full" style={{ transform: "translateZ(30px)" }}>
         {children}
       </div>
     </motion.div>
