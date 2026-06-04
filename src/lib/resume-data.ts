@@ -102,7 +102,7 @@ export const resumeData: ResumeData = {
     totalClients: 9,
     totalProjects: 5,
     location: "Coimbatore, India",
-    email: "iam@varanjith.com",
+    email: "hello@varanjithcom",
     phone: "+91 8489130424",
     resumeUrl: "/ranjith-resume.pdf",
     website: "https://varanjith.com",
@@ -119,7 +119,7 @@ export const resumeData: ResumeData = {
       },
       {
         platform: "Twitter",
-        url: "https://twitter.com/ranjithvaratharajan",
+        url: "https://twitter.com/varanjith",
         icon: "twitter",
       },
     ],
@@ -403,7 +403,7 @@ export const resumeData: ResumeData = {
       endYear: "2012",
       degree: "Master of Computer Applications (MCA)",
       institution: "Hindusthan College of Engineering and Technologies",
-      grade: "Distinction",
+      grade: "9.0 CGPA - Distinction",
     },
     {
       id: 2,
@@ -411,7 +411,7 @@ export const resumeData: ResumeData = {
       endYear: "2009",
       degree: "Bachelor of Computer Applications (BCA)",
       institution: "SMS College of Arts and Science",
-      grade: "First Class",
+      grade: "77% - First Class",
     },
     {
       id: 3,
@@ -419,7 +419,7 @@ export const resumeData: ResumeData = {
       endYear: "2006",
       degree: "Higher Secondary Certificate",
       institution: "SN Matriculation Higher Secondary School",
-      grade: "79.25%",
+      grade: "79.25% - First Class",
     },
     {
       id: 4,
@@ -427,7 +427,7 @@ export const resumeData: ResumeData = {
       endYear: "2004",
       degree: "Secondary School Leaving Certificate",
       institution: "SN Matriculation Higher Secondary School",
-      grade: "74.25%",
+      grade: "74.25% - First Class",
     },
   ],
 
