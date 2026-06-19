@@ -31,7 +31,7 @@ export default function InfiniteMarquee({ children, speed = 40, pauseOnHover = t
   return (
     <div
       ref={containerRef}
-      className={`scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] ${pauseOnHover ? "hover:[&>div]:!animate-none" : ""}`}
+      className={`scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] ${pauseOnHover ? "hover:[&>div]:[animation-play-state:paused]" : ""}`}
     >
       <div
         ref={scrollerRef}
