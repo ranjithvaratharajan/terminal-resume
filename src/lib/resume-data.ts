@@ -102,8 +102,8 @@ export const resumeData: ResumeData = {
     totalClients: 9,
     totalProjects: 5,
     location: "Coimbatore, India",
-    email: "hello@varanjithcom",
-    phone: "+91 8489130424",
+    email: "hello[at]varanjith.com",
+    phone: "+91 7200004545",
     resumeUrl: "/ranjith-resume.pdf",
     website: "https://varanjith.com",
     social: [
